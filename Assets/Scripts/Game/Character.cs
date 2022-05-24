@@ -10,11 +10,15 @@ public abstract class Character : MonoBehaviour {
     public int strength;
     public int defence;
 
-    public void Awake() {
-        currentHealth = maxHealth;
+    public void DealDamage(int playerStrength, int enemyDefence) {
+        int damage = playerStrength - enemyDefence;
+        currentHealth -= damage;
     }
 
-    public void DealDamage() {
-        
+    public bool CheckIfDead(GameObject character) {
+        if (currentHealth <= 0)
+            return true;    
+        else
+            return false;
     }
 }

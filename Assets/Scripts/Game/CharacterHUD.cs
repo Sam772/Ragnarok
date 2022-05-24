@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CharacterHUD : MonoBehaviour {
+public abstract class CharacterHUD : MonoBehaviour {
     public TMP_Text healthText;
     [SerializeField] private Character character;
 
