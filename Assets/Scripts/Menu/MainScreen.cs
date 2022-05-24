@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainScreen : MenuScreen {
-
     public void ChangeToGameScene() {
         SceneManager.LoadScene("Game");
     }

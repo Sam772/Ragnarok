@@ -354,6 +354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2117497129888374374}
   - component: {fileID: 2117497129888374375}
+  - component: {fileID: 9140450118097095634}
   m_Layer: 5
   m_Name: Player
   m_TagString: Untagged
@@ -399,7 +400,20 @@ MonoBehaviour:
   currentHealth: 10
   strength: 5
   defence: 2
+--- !u!114 &9140450118097095634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117497129888374373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962d61c035ccef84d83d38fd4371d01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   healthText: {fileID: 2117497129200408282}
+  character: {fileID: 2117497129888374375}
 --- !u!1 &2117497130858029250
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6070690200015583647}
   - component: {fileID: 6070690200015583644}
+  - component: {fileID: 5964667795221217378}
   m_Layer: 5
   m_Name: Enemy
   m_TagString: Untagged
@@ -54,7 +55,20 @@ MonoBehaviour:
   currentHealth: 10
   strength: 4
   defence: 2
+--- !u!114 &5964667795221217378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6070690200015583646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962d61c035ccef84d83d38fd4371d01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   healthText: {fileID: 6070690200745098313}
+  character: {fileID: 6070690200015583644}
 --- !u!1 &6070690200745098315
 GameObject:
   m_ObjectHideFlags: 0

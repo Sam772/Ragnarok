@@ -9,10 +9,12 @@ public abstract class Character : MonoBehaviour {
     public int currentHealth;
     public int strength;
     public int defence;
-    public TMP_Text healthText;
 
     public void Awake() {
         currentHealth = maxHealth;
-        healthText.text = maxHealth.ToString();
+    }
+
+    public void DealDamage() {
+        
     }
 }
