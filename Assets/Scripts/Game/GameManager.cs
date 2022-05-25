@@ -4,18 +4,19 @@ using UnityEngine;
 using TMPro;
 
 public class GameManager : MonoBehaviour {
-    public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
-    public BattleState state;
-    public Player player;
-    public Transform playerStart;
+    private enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
+    private BattleState state;
+    [SerializeField] private Player player;
+    [SerializeField] private Transform playerStart;
     [SerializeField] private CharacterHUD playerHUD;
-    public Enemy enemy;
+    [SerializeField] private Enemy enemy;
     [SerializeField] private CharacterHUD enemyHUD;
-    public Transform enemyStart;
+    [SerializeField] private Transform enemyStart;
     [SerializeField] private GameHUD gameHUD;
     [SerializeField] private GameObject attackButton;
 
     private void Start() {
+        gameHUD.gamestatus.text = "Setting up battle!";
         state = BattleState.START;
         StartCoroutine(SetupBattle());
     }
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(1.5f);
 
         state = BattleState.PLAYERTURN;
+        gameHUD.gamestatus.text = "Choose an action!";
     }
 
     public void PlayerTurn() {
@@ -74,6 +76,7 @@ public class GameManager : MonoBehaviour {
     private void EndBattle() {
 
         attackButton.SetActive(false);
+        gameHUD.menuButton.SetActive(true);
 
         if (state == BattleState.WON)
             gameHUD.gamestatus.text = "You have won!";
