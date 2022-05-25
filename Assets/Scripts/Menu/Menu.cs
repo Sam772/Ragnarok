@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour {
     [SerializeField] private StartScreen startScreen;
-    [SerializeField] private MainScreen menuScreen;
+    [SerializeField] private FileSelectScreen fileSelectScreen;
+    [SerializeField] private LevelSelectScreen levelSelectScreen;
     private MenuScreen currentScreen;
 
     private void Awake() {
@@ -13,17 +14,21 @@ public class Menu : MonoBehaviour {
 
     private void Start() {
         startScreen.Setup(this);
-        menuScreen.Setup(this);
+        fileSelectScreen.Setup(this);
+        levelSelectScreen.Setup(this);
     }
 
     public void ShowStartScreen() => ShowScreen(startScreen);
-    public void ShowMenuScreen() => ShowScreen(menuScreen);
+    public void ShowFileSelectScreen() => ShowScreen(fileSelectScreen);
+    public void ShowLevelSelectScreen() => ShowScreen(levelSelectScreen);
 
+    // make ienumerator with fade effect
     private void ShowScreen(MenuScreen screen) {
         if (currentScreen == screen) return;
 
         if (screen != startScreen) startScreen.Hide();
-        if (screen != menuScreen) menuScreen.Hide();
+        if (screen != fileSelectScreen) fileSelectScreen.Hide();
+        if (screen != levelSelectScreen) levelSelectScreen.Hide();
 
         screen.Show();
         currentScreen = screen;

@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private IEnumerator PlayerAttack() {
+        gameHUD.gamestatus.text = "Player is attacking!";
         enemy.DealDamage(player.strength, enemy.defence);
         enemyHUD.healthText.text = enemy.currentHealth.ToString();
 
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private IEnumerator EnemyAttack() {
+        gameHUD.gamestatus.text = "Enemy is attacking!";
         player.DealDamage(enemy.strength, player.defence);
         playerHUD.healthText.text = player.currentHealth.ToString();
 
@@ -65,6 +67,7 @@ public class GameManager : MonoBehaviour {
             EndBattle();
         } else {
             state = BattleState.PLAYERTURN;
+            gameHUD.gamestatus.text = "Choose an action!";
         }
     }
 
