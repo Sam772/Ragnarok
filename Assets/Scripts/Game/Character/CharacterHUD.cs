@@ -5,9 +5,11 @@ using TMPro;
 
 public abstract class CharacterHUD : MonoBehaviour {
     public TMP_Text healthText;
+    [SerializeField] private TMP_Text characterName;
     [SerializeField] private Character character;
 
     private void Awake() {
-        healthText.text = character.maxHealth.ToString();
+        characterName.text = character.characterName;
+        healthText.text = "HP: " + character.maxHealth.ToString();
     }
 }

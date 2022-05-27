@@ -6,18 +6,25 @@ using TMPro;
 public class CharacterSelectScreen : MenuScreen {
     [SerializeField] private Character[] characters;
     public int selectedCharacter;
-    public TMP_Text characterText;
+    [SerializeField] private TMP_Text characterText;
 
-    public void SetCharacterKnight() {
-        PlayerPrefs.SetInt("selectedCharacter", 0);
-        characterText.text = "You have selected the Knight!";
-        //Debug.Log(selectedCharacter);
+    public void SetCharacter() {
+        PlayerPrefs.SetInt("selectedCharacter", selectedCharacter);
+        characterText.text = "You have selected the " + characters[selectedCharacter].characterName + "!";
     }
 
-    public void SetCharacterBerserker() {
-        selectedCharacter = 1;
-        PlayerPrefs.SetInt("selectedCharacter", 1);
-        characterText.text = "You have selected the Berserker!";
-        //Debug.Log(selectedCharacter);
+    public void NextCharacter() {
+        characters[selectedCharacter].gameObject.SetActive(false);
+        selectedCharacter = (selectedCharacter + 1) % characters.Length;
+        characters[selectedCharacter].gameObject.SetActive(true);
+    }
+
+    public void PreviousCharacter() {
+        characters[selectedCharacter].gameObject.SetActive(false);
+        selectedCharacter--;
+        if (selectedCharacter < 0 ) {
+            selectedCharacter += characters.Length;
+        }
+        characters[selectedCharacter].gameObject.SetActive(true);
     }
 }

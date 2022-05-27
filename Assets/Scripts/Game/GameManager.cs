@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
     private IEnumerator SetupBattle() {
         int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
         player = characters[selectedCharacter];
-        Instantiate(player.gameObject, playerStart).GetComponent<Player>();
+        Instantiate(player.gameObject, playerStart).GetComponent<Player>().gameObject.SetActive(true);
         Instantiate(enemy.gameObject, enemyStart).GetComponent<Enemy>();
         enemyHUD = FindObjectOfType<EnemyHUD>();
         playerHUD = FindObjectOfType<PlayerHUD>();
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour {
     private IEnumerator PlayerAttack() {
         gameHUD.gamestatus.text = player.characterName + " is attacking!";
         enemy.DealDamage(player.strength, enemy.defence);
-        enemyHUD.healthText.text = enemy.currentHealth.ToString();
+        enemyHUD.healthText.text = "HP: " + enemy.currentHealth.ToString();
 
         yield return new WaitForSeconds(1.5f);
 
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour {
     private IEnumerator EnemyAttack() {
         gameHUD.gamestatus.text = enemy.characterName + " is attacking!";
         player.DealDamage(enemy.strength, player.defence);
-        playerHUD.healthText.text = player.currentHealth.ToString();
+        playerHUD.healthText.text = "HP: " + player.currentHealth.ToString();
 
         yield return new WaitForSeconds(1.5f);
 
