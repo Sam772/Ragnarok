@@ -6,6 +6,9 @@ public class Menu : MonoBehaviour {
     [SerializeField] private StartScreen startScreen;
     [SerializeField] private FileSelectScreen fileSelectScreen;
     [SerializeField] private LevelSelectScreen levelSelectScreen;
+    [SerializeField] private MainMenuScreen mainMenuScreen;
+    [SerializeField] private CharacterSelectScreen characterSelectScreen;
+    [SerializeField] private SettingsScreen settingsScreen;
     private MenuScreen currentScreen;
 
     private void Awake() {
@@ -16,11 +19,17 @@ public class Menu : MonoBehaviour {
         startScreen.Setup(this);
         fileSelectScreen.Setup(this);
         levelSelectScreen.Setup(this);
+        mainMenuScreen.Setup(this);
+        characterSelectScreen.Setup(this);
+        settingsScreen.Setup(this);
     }
 
     public void ShowStartScreen() => ShowScreen(startScreen);
     public void ShowFileSelectScreen() => ShowScreen(fileSelectScreen);
     public void ShowLevelSelectScreen() => ShowScreen(levelSelectScreen);
+    public void ShowMainMenuScreen() => ShowScreen(mainMenuScreen);
+    public void ShowCharacterSelectScreen() => ShowScreen(characterSelectScreen);
+    public void ShowSettingsScreen() => ShowScreen(settingsScreen);
 
     // make ienumerator with fade effect
     private void ShowScreen(MenuScreen screen) {
@@ -28,7 +37,10 @@ public class Menu : MonoBehaviour {
 
         if (screen != startScreen) startScreen.Hide();
         if (screen != fileSelectScreen) fileSelectScreen.Hide();
+        if (screen != mainMenuScreen) mainMenuScreen.Hide();
         if (screen != levelSelectScreen) levelSelectScreen.Hide();
+        if (screen != characterSelectScreen) characterSelectScreen.Hide();
+        if (screen != settingsScreen) settingsScreen.Hide();
 
         screen.Show();
         currentScreen = screen;

@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48f163e2fbe3ac4998dc7ef01f50f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2117497129888374375, guid: c72d3ce4709fd4a4caebb1ec0f570ce0, type: 3}
+  player: {fileID: 0}
   playerStart: {fileID: 351315144}
   playerHUD: {fileID: 0}
   enemy: {fileID: 6070690200015583644, guid: fad5f24a3fe5c0848a22b41c48f269c8, type: 3}
@@ -1229,6 +1229,9 @@ MonoBehaviour:
   enemyStart: {fileID: 1833458282}
   gameHUD: {fileID: 930131818}
   attackButton: {fileID: 733629463}
+  characters:
+  - {fileID: 7914101108897020395, guid: bd79dd0151478cb4a8576ab5202a047b, type: 3}
+  - {fileID: 5472197400885913290, guid: ec1278eabbd2cef49b6ca24a5aef4100, type: 3}
 --- !u!4 &2018819043
 Transform:
   m_ObjectHideFlags: 0

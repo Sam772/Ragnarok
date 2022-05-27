@@ -6,7 +6,7 @@ using TMPro;
 public class GameManager : MonoBehaviour {
     private enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
     private BattleState state;
-    [SerializeField] private Player player;
+    [SerializeField] private Character player;
     [SerializeField] private Transform playerStart;
     [SerializeField] private CharacterHUD playerHUD;
     [SerializeField] private Enemy enemy;
@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private Transform enemyStart;
     [SerializeField] private GameHUD gameHUD;
     [SerializeField] private GameObject attackButton;
+    [SerializeField] private Character[] characters;
 
     private void Start() {
         gameHUD.gamestatus.text = "Setting up battle!";
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour {
     }
 
     private IEnumerator SetupBattle() {
+        int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
+        player = characters[selectedCharacter];
         Instantiate(player.gameObject, playerStart).GetComponent<Player>();
         Instantiate(enemy.gameObject, enemyStart).GetComponent<Enemy>();
         enemyHUD = FindObjectOfType<EnemyHUD>();
@@ -42,7 +45,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private IEnumerator PlayerAttack() {
-        gameHUD.gamestatus.text = "Player is attacking!";
+        gameHUD.gamestatus.text = player.characterName + " is attacking!";
         enemy.DealDamage(player.strength, enemy.defence);
         enemyHUD.healthText.text = enemy.currentHealth.ToString();
 
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private IEnumerator EnemyAttack() {
-        gameHUD.gamestatus.text = "Enemy is attacking!";
+        gameHUD.gamestatus.text = enemy.characterName + " is attacking!";
         player.DealDamage(enemy.strength, player.defence);
         playerHUD.healthText.text = player.currentHealth.ToString();
 
