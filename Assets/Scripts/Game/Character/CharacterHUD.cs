@@ -5,8 +5,8 @@ using TMPro;
 
 public abstract class CharacterHUD : MonoBehaviour {
     public TMP_Text healthText;
-    [SerializeField] private TMP_Text characterName;
-    [SerializeField] private Character character;
+    [SerializeField] public TMP_Text characterName;
+    [SerializeField] public Character character;
 
     private void Awake() {
         characterName.text = character.characterName;

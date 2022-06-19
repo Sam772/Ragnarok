@@ -6,15 +6,17 @@ using TMPro;
 public class GameManager : MonoBehaviour {
     private enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
     private BattleState state;
-    [SerializeField] private Character player;
+    [SerializeField] private Player player;
     [SerializeField] private Transform playerStart;
-    [SerializeField] private CharacterHUD playerHUD;
+    [SerializeField] private PlayerHUD playerHUD;
     [SerializeField] private Enemy enemy;
     [SerializeField] private CharacterHUD enemyHUD;
     [SerializeField] private Transform enemyStart;
     [SerializeField] private GameHUD gameHUD;
     [SerializeField] private GameObject attackButton;
-    [SerializeField] private Character[] characters;
+    [SerializeField] private GameObject skillButton;
+    [SerializeField] private GameObject skillBox;
+    [SerializeField] private Player[] characters;
 
     private void Start() {
         gameHUD.gamestatus.text = "Setting up battle!";
@@ -25,12 +27,20 @@ public class GameManager : MonoBehaviour {
     private IEnumerator SetupBattle() {
         int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
         player = characters[selectedCharacter];
+        gameHUD.skillName.text = player.skillOne.skillName.ToString();
+        gameHUD.skillCost.text = player.skillOne.skillCost.ToString();
         Instantiate(player.gameObject, playerStart).GetComponent<Player>().gameObject.SetActive(true);
         Instantiate(enemy.gameObject, enemyStart).GetComponent<Enemy>();
         enemyHUD = FindObjectOfType<EnemyHUD>();
         playerHUD = FindObjectOfType<PlayerHUD>();
         player.currentHealth = player.maxHealth;
         enemy.currentHealth = enemy.maxHealth;
+        player.currentSkillPoints = player.maxSkillPoints;
+        playerHUD.characterSkillPoints.text = "SP: " + player.maxSkillPoints.ToString();
+
+        // temporary solution
+        if (player.characterName == "Knight") player.defence = 3;
+        if (player.characterName == "Berserker") player.strength = 7;
 
         yield return new WaitForSeconds(1.5f);
 
@@ -58,6 +68,41 @@ public class GameManager : MonoBehaviour {
             state = BattleState.ENEMYTURN;
             StartCoroutine(EnemyAttack());
         }
+    }
+
+    public void PlayerSkill() {
+        // show the skill box
+        if (skillBox.activeSelf == false)  {
+            skillBox.SetActive(true);
+        } else {
+            skillBox.SetActive(false);
+        }
+    }
+
+    public void PlayerSkillTurn() {
+        if (state != BattleState.PLAYERTURN) return;
+        
+        StartCoroutine(PlayerSkillOne());
+    }
+
+    public IEnumerator PlayerSkillOne() {
+        gameHUD.gamestatus.text = player.characterName + " used " + player.skillOne.skillName + "!";
+
+        // temporary solution
+        switch(player.characterName) {
+            case "Knight":
+            player.skillOne.BolsterDefence(player, playerHUD);
+            break;
+
+            case "Berserker":
+            player.skillOne.Berserk(player, playerHUD);
+            break;
+        }
+
+        yield return new WaitForSeconds(1.5f);
+
+        state = BattleState.ENEMYTURN;
+        StartCoroutine(EnemyAttack());
     }
 
     private IEnumerator EnemyAttack() {
