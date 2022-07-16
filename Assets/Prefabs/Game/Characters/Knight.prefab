@@ -674,6 +674,7 @@ MonoBehaviour:
   maxSkillPoints: 10
   currentSkillPoints: 10
   skillOne: {fileID: 4554819372371739711}
+  playerHUD: {fileID: 3810374945125563581}
 --- !u!114 &3810374945125563581
 MonoBehaviour:
   m_ObjectHideFlags: 0
