@@ -13,17 +13,33 @@ public class PlayerHUD : CharacterHUD {
         characterName.text = player.characterName;
         healthText.text = "HP: " + player.maxHealth.ToString();
         characterSkillPoints.text = "SP: " + player.maxSkillPoints.ToString();
-        playerLevel.text = "Level " + player.levelSystem.GetLevel().ToString();
     }
 
-    private void SetLevelNumber(int levelNumber) {
-        playerLevel.text = "Level " + (levelNumber + 1);
+    private void SetLevel(int level) {
+        playerLevel.text = "Level " + level;
     }
 
     public void SetLevelSystem(LevelSystem levelSystem) {
         this.levelSystem = levelSystem;
 
-        SetLevelNumber(levelSystem.GetLevel());
+        SetLevel(levelSystem.GetLevel());
+
+        levelSystem.onLevelUpdate += LevelSystem_onLevelUpdate;
     }
+
+    private void LevelSystem_onLevelUpdate(object sender, System.EventArgs e) {
+        SetLevel(levelSystem.GetLevel());
+    }
+
+
+    // Note:
+    // Might have a exp bar for later or current and exp for next level
+    // public void SetExperienceRequiredForNextLevel() {
+
+    // }
+
+    // private void LevelSystem_onExperienceUpdate(object sender, System.EventArgs e) {
+    //     throw new System.NotImplementedException();
+    // }
 
 }

@@ -11,12 +11,6 @@ public class Player : Character {
 
     private void Awake() {
         levelSystem = new LevelSystem();
-        Debug.Log(levelSystem.GetLevel());
-        levelSystem.AddExperience(50);
-        Debug.Log(levelSystem.GetLevel());
-        levelSystem.AddExperience(50);
-        Debug.Log(levelSystem.GetLevel());
-
         playerHUD.SetLevelSystem(levelSystem);
     }
 }
