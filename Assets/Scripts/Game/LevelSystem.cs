@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelSystem {
+    // This script is for the leveling system
     
+    // Leveling stuff
     private int level;
     private int currentExperience;
     private int experienceToNextLevel;

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 
 public class PlayerHUD : CharacterHUD {
+    // This scripts represents the player ui which derives from a base character ui
     [SerializeField] public TMP_Text characterSkillPoints;
     [SerializeField] private Player player;
     [SerializeField] private TMP_Text playerLevel;

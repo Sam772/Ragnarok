@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 
 public class CharacterSelectScreen : MenuScreen {
+    // This script represents everything specific to the character selection screen
+
     [SerializeField] private Character[] characters;
     public int selectedCharacter;
     [SerializeField] private TMP_Text characterText;

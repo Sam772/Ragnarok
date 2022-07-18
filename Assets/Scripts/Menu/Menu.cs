@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Menu : MonoBehaviour {
+    // This script sets up all of the screens and how they are handled
+
     [SerializeField] private StartScreen startScreen;
     [SerializeField] private FileSelectScreen fileSelectScreen;
     [SerializeField] private LevelSelectScreen levelSelectScreen;

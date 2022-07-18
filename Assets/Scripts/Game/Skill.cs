@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Skill : MonoBehaviour {
+    // This scripts is temporarily used for skills on playable characters
+
     public string skillName;
     public string skillDescription;
     public int skillCost;

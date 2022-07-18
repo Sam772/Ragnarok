@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 
 public abstract class CharacterHUD : MonoBehaviour {
+    // This scripts represents the base character ui used for both players and enemies
+
     public TMP_Text healthText;
     [SerializeField] public TMP_Text characterName;
     [SerializeField] public Character character;

@@ -4,8 +4,14 @@ using UnityEngine;
 using TMPro;
 
 public class GameManager : MonoBehaviour {
+
+    // This script manages the game while its running
+
+    // The states handled while the game is running
     private enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
     private BattleState state;
+
+    // Player, enemy, the ui and starting positions
     [SerializeField] private Player player;
     [SerializeField] private Transform playerStart;
     [SerializeField] private PlayerHUD playerHUD;
@@ -16,6 +22,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject attackButton;
     [SerializeField] private GameObject skillButton;
     [SerializeField] private GameObject skillBox;
+
+    // List of playable characters
     [SerializeField] private Player[] characters;
 
     private void Start() {
@@ -129,7 +137,7 @@ public class GameManager : MonoBehaviour {
 
         if (state == BattleState.WON) {
             gameHUD.gamestatus.text = "You have won!";
-            // Note
+            // Note:
             // Object reference exception
             player.levelSystem.AddExperience(100);
         } else
