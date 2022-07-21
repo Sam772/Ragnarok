@@ -15,7 +15,7 @@ public abstract class Character : MonoBehaviour {
 
     public void DealDamage(int playerStrength, int enemyDefence) {
         int damage = playerStrength - enemyDefence;
-        if (damage < 0) damage = 0;
+        if (damage < 0) damage = 1;
         currentHealth -= damage;
     }
 

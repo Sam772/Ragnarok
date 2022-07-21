@@ -8,7 +8,7 @@ public class PlayerHUD : CharacterHUD {
     [SerializeField] public TMP_Text characterSkillPoints;
     [SerializeField] private Player player;
     [SerializeField] private TMP_Text playerLevel;
-    private LevelSystem levelSystem;
+    public LevelSystem levelSystem;
 
     private void Start() {
         characterName.text = player.characterName;

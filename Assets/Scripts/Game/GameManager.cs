@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour {
         enemy.currentHealth = enemy.maxHealth;
         player.currentSkillPoints = player.maxSkillPoints;
         playerHUD.characterSkillPoints.text = "SP: " + player.maxSkillPoints.ToString();
-        //player.PlayerLevelSetup();
 
         // temporary solution
         if (player.characterName == "Knight") player.defence = 3;
@@ -137,9 +136,7 @@ public class GameManager : MonoBehaviour {
 
         if (state == BattleState.WON) {
             gameHUD.gamestatus.text = "You have won!";
-            // Note:
-            // Object reference exception
-            player.levelSystem.AddExperience(100);
+            playerHUD.levelSystem.AddExperience(100);
         } else
             gameHUD.gamestatus.text = "You have lost!";
     }

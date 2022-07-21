@@ -24,7 +24,7 @@ public class LevelSystem {
 
     public void AddExperience(int experienceGained) {
         currentExperience += experienceGained;
-        if (currentExperience >= experienceToNextLevel) {
+        while (currentExperience >= experienceToNextLevel) {
             level++;
             Debug.Log("Leveled up! - " + level);
             currentExperience -= experienceToNextLevel;
