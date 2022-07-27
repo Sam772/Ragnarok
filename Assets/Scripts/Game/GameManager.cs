@@ -56,16 +56,16 @@ public class GameManager : MonoBehaviour {
         gameHUD.gamestatus.text = "Choose an action!";
     }
 
-    public void PlayerTurn() {
+    public void OnAttack() {
         if (state != BattleState.PLAYERTURN) return;
-
-        StartCoroutine(PlayerAttack());   
+        StartCoroutine(PlayerAttack());
     }
 
     private IEnumerator PlayerAttack() {
         gameHUD.gamestatus.text = player.characterName + " is attacking!";
-        enemy.DealDamage(player.strength, enemy.defence);
+        enemy.Attack(player.strength, enemy.defence);
         enemyHUD.healthText.text = "HP: " + enemy.currentHealth.ToString();
+        state = BattleState.ENEMYTURN;
 
         yield return new WaitForSeconds(1.5f);
 
@@ -78,6 +78,33 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    private IEnumerator EnemyAttack() {
+        gameHUD.gamestatus.text = enemy.characterName + " is attacking!";
+        player.Attack(enemy.strength, player.defence);
+        playerHUD.healthText.text = "HP: " + player.currentHealth.ToString();
+
+        yield return new WaitForSeconds(1.5f);
+
+        if (player.CheckIfDead(player.gameObject)) {
+            state = BattleState.LOST;
+            EndBattle();
+        } else {
+            state = BattleState.PLAYERTURN;
+            gameHUD.gamestatus.text = "Choose an action!";
+        }
+    }
+
+    public void OnSkill() {
+        if (state != BattleState.PLAYERTURN) return;
+
+        // show the skill box
+        if (skillBox.activeSelf == false)  {
+            skillBox.SetActive(true);
+        } else {
+            skillBox.SetActive(false);
+        }
+    }
+
     public void PlayerSkill() {
         // show the skill box
         if (skillBox.activeSelf == false)  {
@@ -87,14 +114,15 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void PlayerSkillTurn() {
+    public void PlayerSkillOne() {
         if (state != BattleState.PLAYERTURN) return;
         
-        StartCoroutine(PlayerSkillOne());
+        StartCoroutine(PlayerSkillOneActivate());
     }
 
-    public IEnumerator PlayerSkillOne() {
+    public IEnumerator PlayerSkillOneActivate() {
         gameHUD.gamestatus.text = player.characterName + " used " + player.skillOne.skillName + "!";
+        state = BattleState.ENEMYTURN;
 
         // temporary solution
         switch(player.characterName) {
@@ -113,20 +141,19 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(EnemyAttack());
     }
 
-    private IEnumerator EnemyAttack() {
-        gameHUD.gamestatus.text = enemy.characterName + " is attacking!";
-        player.DealDamage(enemy.strength, player.defence);
-        playerHUD.healthText.text = "HP: " + player.currentHealth.ToString();
+    public void OnDefend() {
+        if (state != BattleState.PLAYERTURN) return;
+
+        StartCoroutine(PlayerDefend());
+    }
+
+    public IEnumerator PlayerDefend() {
+        gameHUD.gamestatus.text = player.characterName + " is defending!";
+        state = BattleState.ENEMYTURN;
+
+        // TO DO:
 
         yield return new WaitForSeconds(1.5f);
-
-        if (player.CheckIfDead(player.gameObject)) {
-            state = BattleState.LOST;
-            EndBattle();
-        } else {
-            state = BattleState.PLAYERTURN;
-            gameHUD.gamestatus.text = "Choose an action!";
-        }
     }
 
     private void EndBattle() {

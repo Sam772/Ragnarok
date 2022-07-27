@@ -13,15 +13,19 @@ public abstract class Character : MonoBehaviour {
     public int strength;
     public int defence;
 
-    public void DealDamage(int playerStrength, int enemyDefence) {
+    public void Attack(int playerStrength, int enemyDefence) {
         int damage = playerStrength - enemyDefence;
         if (damage < 0) damage = 1;
         currentHealth -= damage;
     }
 
+    public void Defend() {
+        // defend implementation
+    }
+
     public bool CheckIfDead(GameObject character) {
         if (currentHealth <= 0)
-            return true;    
+            return true;
         else
             return false;
     }
