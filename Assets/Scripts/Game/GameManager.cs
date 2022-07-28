@@ -58,12 +58,16 @@ public class GameManager : MonoBehaviour {
 
     public void OnAttack() {
         if (state != BattleState.PLAYERTURN) return;
+
         StartCoroutine(PlayerAttack());
     }
 
     private IEnumerator PlayerAttack() {
         gameHUD.gamestatus.text = player.characterName + " is attacking!";
+
+        // called on the enemy, subtracting its health
         enemy.Attack(player.strength, enemy.defence);
+
         enemyHUD.healthText.text = "HP: " + enemy.currentHealth.ToString();
         state = BattleState.ENEMYTURN;
 
@@ -74,6 +78,36 @@ public class GameManager : MonoBehaviour {
             EndBattle();
         } else {
             state = BattleState.ENEMYTURN;
+            EnemyTurn();
+        }
+    }
+
+    public IEnumerator PlayerDefend() {
+        gameHUD.gamestatus.text = player.characterName + " is defending!";
+
+        Debug.Log("Player DEF: " + player.defence);
+
+        // should double player defence
+        player.Defend();
+        Debug.Log("Player DEF: " + player.defence);
+
+        state = BattleState.ENEMYTURN;
+
+        yield return new WaitForSeconds(1.5f);
+
+        EnemyTurn();
+
+        // ensure player defence is always what it originally is after enemy attacks
+        StartCoroutine(player.ReturnToOriginalDefence());
+    }
+
+    private void EnemyTurn() {
+        if (state != BattleState.ENEMYTURN) return;
+
+        // ai moment
+        if (enemy.currentHealth <= 5) {
+            StartCoroutine(EnemyDefend());
+        } else {
             StartCoroutine(EnemyAttack());
         }
     }
@@ -94,18 +128,29 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    private IEnumerator EnemyDefend() {
+        gameHUD.gamestatus.text = enemy.characterName + " is defending!";
+
+        Debug.Log("Enemy DEF: " + enemy.defence);
+
+        // should double enemy defence
+        enemy.Defend();
+        Debug.Log("Enemy DEF: " + enemy.defence);
+
+        yield return new WaitForSeconds(1.5f);
+
+        // ensure enemy defence is always what it originally is after enemy attacks
+        StartCoroutine(enemy.ReturnToOriginalDefence());
+
+        Debug.Log("Enemy DEF: " + enemy.defence);
+
+        state = BattleState.PLAYERTURN;
+        gameHUD.gamestatus.text = "Choose an action!";
+    }
+
     public void OnSkill() {
         if (state != BattleState.PLAYERTURN) return;
 
-        // show the skill box
-        if (skillBox.activeSelf == false)  {
-            skillBox.SetActive(true);
-        } else {
-            skillBox.SetActive(false);
-        }
-    }
-
-    public void PlayerSkill() {
         // show the skill box
         if (skillBox.activeSelf == false)  {
             skillBox.SetActive(true);
@@ -138,22 +183,13 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(1.5f);
 
         state = BattleState.ENEMYTURN;
-        StartCoroutine(EnemyAttack());
+        EnemyTurn();
     }
 
     public void OnDefend() {
         if (state != BattleState.PLAYERTURN) return;
 
         StartCoroutine(PlayerDefend());
-    }
-
-    public IEnumerator PlayerDefend() {
-        gameHUD.gamestatus.text = player.characterName + " is defending!";
-        state = BattleState.ENEMYTURN;
-
-        // TO DO:
-
-        yield return new WaitForSeconds(1.5f);
     }
 
     private void EndBattle() {

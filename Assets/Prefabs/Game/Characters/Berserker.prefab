@@ -187,11 +187,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Berserker
   maxHealth: 12
-  currentHealth: 12
-  strength: 7
-  defence: 0
+  currentHealth: 1
+  strength: 11
+  defence: 1
   maxSkillPoints: 10
-  currentSkillPoints: 10
+  currentSkillPoints: 6
   skillOne: {fileID: 8108302349926111177}
   playerHUD: {fileID: 1550821244910976425}
 --- !u!114 &1550821244910976425
