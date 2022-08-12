@@ -26,6 +26,8 @@ public abstract class Character : MonoBehaviour {
     public IEnumerator ReturnToOriginalDefence() {
         yield return new WaitForSeconds(2f);
 
+        // bug here if too fast
+        
         defence /= 2;
         Debug.Log("Player DEF: " + this.defence);
     }

@@ -684,7 +684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &338410928
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1187,7 +1187,7 @@ GameObject:
   - component: {fileID: 733629466}
   - component: {fileID: 733629465}
   m_Layer: 5
-  m_Name: PlayerAttack
+  m_Name: PlayerAttackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1925,7 +1925,7 @@ GameObject:
   - component: {fileID: 1549240556}
   - component: {fileID: 1549240555}
   m_Layer: 5
-  m_Name: PlayerSkill
+  m_Name: PlayerSkillButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2061,7 +2061,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1799902129
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2125,7 +2125,7 @@ GameObject:
   - component: {fileID: 1929129035}
   - component: {fileID: 1929129034}
   m_Layer: 5
-  m_Name: PlayerDefend
+  m_Name: PlayerDefendButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2274,17 +2274,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48f163e2fbe3ac4998dc7ef01f50f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battleManager: {fileID: 0}
   player: {fileID: 0}
-  playerStart: {fileID: 351315144}
+  playerStartPosition: {fileID: 351315144}
   playerHUD: {fileID: 0}
+  playerAttackButton: {fileID: 733629463}
+  playerSkillButton: {fileID: 1549240553}
+  playerSkillBox: {fileID: 1799902128}
   enemy: {fileID: 6070690200015583644, guid: fad5f24a3fe5c0848a22b41c48f269c8, type: 3}
   enemyHUD: {fileID: 0}
   enemyStart: {fileID: 1833458282}
   gameHUD: {fileID: 930131818}
-  attackButton: {fileID: 733629463}
-  skillButton: {fileID: 1549240553}
-  skillBox: {fileID: 338410927}
-  characters:
+  playableCharacters:
   - {fileID: 7914101108897020395, guid: bd79dd0151478cb4a8576ab5202a047b, type: 3}
   - {fileID: 5472197400885913290, guid: ec1278eabbd2cef49b6ca24a5aef4100, type: 3}
 --- !u!4 &2018819043

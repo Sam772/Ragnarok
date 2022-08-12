@@ -9,6 +9,8 @@ public class Player : Character {
     // Skill and leveling
     public int maxSkillPoints;
     public int currentSkillPoints;
+
+    // maybe make skill an array later
     public Skill skillOne;
     private LevelSystem levelSystem;
     [SerializeField] private PlayerHUD playerHUD;

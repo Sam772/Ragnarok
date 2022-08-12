@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Goblin
   maxHealth: 10
-  currentHealth: 10
+  currentHealth: 7
   strength: 4
   defence: 2
 --- !u!114 &2380057418636200564
