@@ -8,7 +8,7 @@ public class BattleManager : MonoBehaviour {
     [SerializeField] private Enemy enemy;
 
     // The states depending on what action the player chooses
-    private enum PlayerActionState { ATTACK, DEFEND, SKILL };
+    private enum PlayerActionState { Attack, Defend, Skill };
     private PlayerActionState playerActionState;
 
     // Currently unused

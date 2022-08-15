@@ -185,10 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Goblin
-  maxHealth: 10
-  currentHealth: 7
-  strength: 4
-  defence: 2
+  enemyHUD: {fileID: 2380057418636200564}
 --- !u!114 &2380057418636200564
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class PlayerHUD : CharacterHUD {
 
     private void Start() {
         characterName.text = player.characterName;
-        healthText.text = "HP: " + player.maxHealth.ToString();
+        healthText.text = "HP: " + player.Stats.MaxHealth.ToString();
         characterSkillPoints.text = "SP: " + player.maxSkillPoints.ToString();
     }
 

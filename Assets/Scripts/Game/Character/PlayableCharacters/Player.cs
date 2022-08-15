@@ -13,7 +13,7 @@ public class Player : Character {
     // maybe make skill an array later
     public Skill skillOne;
     private LevelSystem levelSystem;
-    [SerializeField] private PlayerHUD playerHUD;
+    [SerializeField] public PlayerHUD playerHUD;
 
     private void Awake() {
         levelSystem = new LevelSystem();
@@ -30,16 +30,16 @@ public class Player : Character {
     private void LevelSystem_OnLevelUpdate(object sender, EventArgs e) {
         // Increase stats when player levels up
         SetNewStats();
-        Debug.Log(this.characterName + " leveled up!");
+        //Debug.Log(this.characterName + " leveled up!");
     }
 
     private void SetNewStats() {
         // For testing
         // Debug.Log("hp: " + this.maxHealth + " str: " + this.strength + " def: " + this.defence);
-        this.maxHealth += 5;
-        this.currentHealth = this.maxHealth;
-        this.strength += 2;
-        this.defence += 1;
+        // this.maxHealth += 5;
+        // this.currentHealth = this.maxHealth;
+        // this.strength += 2;
+        // this.defence += 1;
         // Debug.Log("hp: " + this.maxHealth + " str: " + this.strength + " def: " + this.defence);
     }
 }

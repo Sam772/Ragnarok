@@ -8,19 +8,35 @@ public abstract class Character : MonoBehaviour {
 
     // Attributes of a character
     public string characterName;
-    public int maxHealth;
-    public int currentHealth;
-    public int strength;
-    public int defence;
+    // public int maxHealth;
+    // public int currentHealth;
+    // public int strength;
+    // public int defence;
 
-    public void Attack(int playerStrength, int enemyDefence) {
-        int damage = playerStrength - enemyDefence;
+    public Stats Stats { get; private set; }
+
+    public virtual void SetStats(Stats stats) {
+        Stats = stats;
+    }
+
+    public virtual void TakeDamage(int targetStrength, int myDefence) {
+        int damage = targetStrength - myDefence;
         if (damage <= 0) damage = 1;
-        currentHealth -= damage;
+        //currentHealth -= damage;
+
+        var stats = Stats;
+        stats.CurrentHealth -= damage;
+
+        SetStats(stats);
     }
 
     public void Defend() {
-        defence *= 2;
+        //defence *= 2;
+
+        var stats = Stats;
+        stats.Defence *= 2;
+        
+        SetStats(stats);
     }
 
     public IEnumerator ReturnToOriginalDefence() {
@@ -28,12 +44,18 @@ public abstract class Character : MonoBehaviour {
 
         // bug here if too fast
         
-        defence /= 2;
-        Debug.Log("Player DEF: " + this.defence);
+        //defence /= 2;
+
+        var stats = Stats;
+        stats.Defence /= 2;
+        
+        SetStats(stats);
+
+        Debug.Log("Player DEF: " + stats.Defence);
     }
 
     public bool CheckIfDead(GameObject character) {
-        if (currentHealth <= 0)
+        if (Stats.CurrentHealth <= 0)
             return true;
         else
             return false;

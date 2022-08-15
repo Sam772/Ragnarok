@@ -12,6 +12,6 @@ public abstract class CharacterHUD : MonoBehaviour {
 
     private void Awake() {
         characterName.text = character.characterName;
-        healthText.text = "HP: " + character.maxHealth.ToString();
+        healthText.text = "HP: " + character.Stats.MaxHealth.ToString();
     }
 }
