@@ -5,7 +5,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Scriptable Enemy Character")]
 public class ScriptableEnemy : ScriptableCharacter {
-    public Enemies enemies;
+    public Enemies Enemies;
 }
 
 [Serializable]

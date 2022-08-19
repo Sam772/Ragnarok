@@ -7,7 +7,7 @@ public abstract class Character : MonoBehaviour {
     // This scripts represents the base character class used for both players and enemies
 
     // Attributes of a character
-    public string characterName;
+    public string CharacterName;
     // public int maxHealth;
     // public int currentHealth;
     // public int strength;

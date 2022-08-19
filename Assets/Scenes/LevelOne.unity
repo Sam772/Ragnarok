@@ -783,7 +783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 351315144}
   m_Layer: 0
-  m_Name: PlayerStart
+  m_Name: PlayerSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -797,7 +797,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351315143}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -600, y: 300, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 930131817}
@@ -1500,8 +1500,8 @@ Canvas:
   m_GameObject: {fileID: 930131813}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1134896850}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1547,10 +1547,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45664aad9ca138d44a0c56492494b92e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamestatus: {fileID: 101423625}
-  skillName: {fileID: 1046524544}
-  skillCost: {fileID: 1190732883}
-  menuButton: {fileID: 674415947}
+  _gamestatus: {fileID: 101423625}
+  SkillName: {fileID: 1046524544}
+  SkillCost: {fileID: 1190732883}
+  MenuButton: {fileID: 674415947}
 --- !u!1 &1046524542
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,6 +1728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1fe8fbad3b50524e95da225103e2c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerSpawnPosition: {fileID: 351315144}
+  _enemySpawnPosition: {fileID: 1833458282}
 --- !u!1 &1134896848
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,7 +2352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1833458282}
   m_Layer: 0
-  m_Name: EnemyStart
+  m_Name: EnemySpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2364,7 +2366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833458281}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 600, y: 300, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 930131817}
@@ -2562,18 +2564,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48f163e2fbe3ac4998dc7ef01f50f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleManager: {fileID: 0}
-  player: {fileID: 0}
-  playerStartPosition: {fileID: 351315144}
-  playerHUD: {fileID: 0}
-  playerAttackButton: {fileID: 733629463}
-  playerSkillButton: {fileID: 1549240553}
-  playerSkillBox: {fileID: 1799902128}
-  enemy: {fileID: 6070690200015583644, guid: fad5f24a3fe5c0848a22b41c48f269c8, type: 3}
-  enemyHUD: {fileID: 0}
-  enemyStart: {fileID: 1833458282}
-  gameHUD: {fileID: 930131818}
-  playableCharacters:
+  _battleManager: {fileID: 0}
+  _playerHUD: {fileID: 0}
+  _playerAttackButton: {fileID: 733629463}
+  _playerSkillButton: {fileID: 1549240553}
+  _playerSkillBox: {fileID: 1799902128}
+  _enemyHUD: {fileID: 0}
+  _gameHUD: {fileID: 930131818}
+  _playableCharacters:
   - {fileID: 7914101108897020395, guid: bd79dd0151478cb4a8576ab5202a047b, type: 3}
   - {fileID: 5472197400885913290, guid: ec1278eabbd2cef49b6ca24a5aef4100, type: 3}
 --- !u!4 &2018819043
@@ -2584,7 +2582,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018819041}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1124.6508, y: -527.7592, z: 730.8027}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 430523582}

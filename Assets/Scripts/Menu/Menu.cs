@@ -5,46 +5,46 @@ using UnityEngine;
 public class Menu : MonoBehaviour {
     // This script sets up all of the screens and how they are handled
 
-    [SerializeField] private StartScreen startScreen;
-    [SerializeField] private FileSelectScreen fileSelectScreen;
-    [SerializeField] private LevelSelectScreen levelSelectScreen;
-    [SerializeField] private MainMenuScreen mainMenuScreen;
-    [SerializeField] private CharacterSelectScreen characterSelectScreen;
-    [SerializeField] private SettingsScreen settingsScreen;
-    private MenuScreen currentScreen;
+    [SerializeField] private StartScreen _startScreen;
+    [SerializeField] private FileSelectScreen _fileSelectScreen;
+    [SerializeField] private MainMenuScreen _mainMenuScreen;
+    [SerializeField] private CharacterSelectScreen _characterSelectScreen;
+    [SerializeField] private SettingsScreen _settingsScreen;
+    [SerializeField] private LevelSelectScreen _levelSelectScreen;
+    private MenuScreen _currentScreen;
 
     private void Awake() {
         ShowStartScreen();
     }
 
     private void Start() {
-        startScreen.Setup(this);
-        fileSelectScreen.Setup(this);
-        levelSelectScreen.Setup(this);
-        mainMenuScreen.Setup(this);
-        characterSelectScreen.Setup(this);
-        settingsScreen.Setup(this);
+        _startScreen.Setup(this);
+        _fileSelectScreen.Setup(this);
+        _levelSelectScreen.Setup(this);
+        _mainMenuScreen.Setup(this);
+        _characterSelectScreen.Setup(this);
+        _settingsScreen.Setup(this);
     }
 
-    public void ShowStartScreen() => ShowScreen(startScreen);
-    public void ShowFileSelectScreen() => ShowScreen(fileSelectScreen);
-    public void ShowLevelSelectScreen() => ShowScreen(levelSelectScreen);
-    public void ShowMainMenuScreen() => ShowScreen(mainMenuScreen);
-    public void ShowCharacterSelectScreen() => ShowScreen(characterSelectScreen);
-    public void ShowSettingsScreen() => ShowScreen(settingsScreen);
+    public void ShowStartScreen() => ShowScreen(_startScreen);
+    public void ShowFileSelectScreen() => ShowScreen(_fileSelectScreen);
+    public void ShowLevelSelectScreen() => ShowScreen(_levelSelectScreen);
+    public void ShowMainMenuScreen() => ShowScreen(_mainMenuScreen);
+    public void ShowCharacterSelectScreen() => ShowScreen(_characterSelectScreen);
+    public void ShowSettingsScreen() => ShowScreen(_settingsScreen);
 
     // make ienumerator with fade effect
     private void ShowScreen(MenuScreen screen) {
-        if (currentScreen == screen) return;
+        if (_currentScreen == screen) return;
 
-        if (screen != startScreen) startScreen.Hide();
-        if (screen != fileSelectScreen) fileSelectScreen.Hide();
-        if (screen != mainMenuScreen) mainMenuScreen.Hide();
-        if (screen != levelSelectScreen) levelSelectScreen.Hide();
-        if (screen != characterSelectScreen) characterSelectScreen.Hide();
-        if (screen != settingsScreen) settingsScreen.Hide();
+        if (screen != _startScreen) _startScreen.Hide();
+        if (screen != _fileSelectScreen) _fileSelectScreen.Hide();
+        if (screen != _mainMenuScreen) _mainMenuScreen.Hide();
+        if (screen != _levelSelectScreen) _levelSelectScreen.Hide();
+        if (screen != _characterSelectScreen) _characterSelectScreen.Hide();
+        if (screen != _settingsScreen) _settingsScreen.Hide();
 
         screen.Show();
-        currentScreen = screen;
+        _currentScreen = screen;
     }
 }

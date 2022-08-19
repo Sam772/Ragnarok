@@ -7,12 +7,15 @@ using UnityEngine.SceneManagement;
 public class GameHUD : MonoBehaviour {
     // This script represents the game ui which isn't attached to a character or enemy
 
-    public TMP_Text gamestatus;
-    [SerializeField] public TMP_Text skillName;
-    [SerializeField] public TMP_Text skillCost;
-    public GameObject menuButton;
+    [SerializeField] private TMP_Text _gamestatus;
+    [SerializeField] public TMP_Text SkillName;
+    [SerializeField] public TMP_Text SkillCost;
+    public GameObject MenuButton;
 
     public void BackToMenu() {
         SceneManager.LoadScene("Menu");
+    }
+    public void SetGameStatusText(string text) {
+        _gamestatus.text = text;
     }
 }

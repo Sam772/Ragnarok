@@ -666,15 +666,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d180502cb5d7144bec02723dad8634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Knight
-  maxHealth: 10
-  currentHealth: 10
-  strength: 5
-  defence: 3
-  maxSkillPoints: 10
-  currentSkillPoints: 10
-  skillOne: {fileID: 4554819372371739711}
-  playerHUD: {fileID: 3810374945125563581}
+  CharacterName: Knight
+  MaxSkillPoints: 10
+  CurrentSkillPoints: 10
+  SkillOne: {fileID: 4554819372371739711}
+  PlayerHUD: {fileID: 3810374945125563581}
 --- !u!114 &3810374945125563581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,12 +683,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dccb6e7fb75a84388d39d5154792be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthText: {fileID: 7551104591130982202}
-  characterName: {fileID: 4381371681176066139}
-  character: {fileID: 7914101108897020395}
-  characterSkillPoints: {fileID: 1744842600553020357}
-  player: {fileID: 7914101108897020395}
-  playerLevel: {fileID: 5159432076627313518}
+  HealthText: {fileID: 7551104591130982202}
+  CharacterName: {fileID: 4381371681176066139}
+  Character: {fileID: 7914101108897020395}
+  CharacterSkillPoints: {fileID: 1744842600553020357}
+  _player: {fileID: 7914101108897020395}
+  _playerLevel: {fileID: 5159432076627313518}
 --- !u!114 &4554819372371739711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,7 +701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ad813ceb703f045b50fe2b62fa6e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: BolsterDefence
-  skillDescription: Increases Knight's defence by 2.
-  skillCost: 3
-  gameHUD: {fileID: 0}
+  SkillName: BolsterDefence
+  SkillDescription: Increases Knight's defence by 2.
+  SkillCost: 3
+  _gameHUD: {fileID: 0}

@@ -5,31 +5,33 @@ using TMPro;
 
 public class PlayerHUD : CharacterHUD {
     // This scripts represents the player ui which derives from a base character ui
-    [SerializeField] public TMP_Text characterSkillPoints;
-    [SerializeField] private Player player;
-    [SerializeField] private TMP_Text playerLevel;
-    public LevelSystem levelSystem;
+
+    // Make this private and set the value here
+    [SerializeField] public TMP_Text CharacterSkillPoints;
+    [SerializeField] private Player _player;
+    [SerializeField] private TMP_Text _playerLevel;
+    public LevelSystem LevelSystem;
 
     private void Start() {
-        characterName.text = player.characterName;
-        healthText.text = "HP: " + player.Stats.MaxHealth.ToString();
-        characterSkillPoints.text = "SP: " + player.maxSkillPoints.ToString();
+        CharacterName.text = _player.CharacterName;
+        HealthText.text = "HP: " + _player.Stats.MaxHealth.ToString();
+        CharacterSkillPoints.text = "SP: " + _player.MaxSkillPoints.ToString();
     }
 
     private void SetLevel(int level) {
-        playerLevel.text = "Level " + level;
+        _playerLevel.text = "Level " + level;
     }
 
     public void SetLevelSystem(LevelSystem levelSystem) {
-        this.levelSystem = levelSystem;
+        this.LevelSystem = levelSystem;
 
         SetLevel(levelSystem.GetLevel());
 
-        levelSystem.onLevelUpdate += LevelSystem_onLevelUpdate;
+        levelSystem.OnLevelUpdate += LevelSystem_onLevelUpdate;
     }
 
     private void LevelSystem_onLevelUpdate(object sender, System.EventArgs e) {
-        SetLevel(levelSystem.GetLevel());
+        SetLevel(LevelSystem.GetLevel());
     }
 
 

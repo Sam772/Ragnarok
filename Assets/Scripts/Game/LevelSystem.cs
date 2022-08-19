@@ -7,28 +7,28 @@ public class LevelSystem {
     // This script is for the leveling system
     
     // Leveling stuff
-    private int level;
-    private int currentExperience;
-    private int experienceToNextLevel;
-    public event EventHandler onLevelUpdate;
+    private int _level;
+    private int _currentExperience;
+    private int _experienceToNextLevel;
+    public event EventHandler OnLevelUpdate;
 
     // Note:
     // For potential exp bar
     // public event EventHandler onExperienceUpdate;
 
     public LevelSystem() {
-        level = 1;
-        currentExperience = 0;
-        experienceToNextLevel = 100;
+        _level = 1;
+        _currentExperience = 0;
+        _experienceToNextLevel = 100;
     }
 
     public void AddExperience(int experienceGained) {
-        currentExperience += experienceGained;
-        while (currentExperience >= experienceToNextLevel) {
-            level++;
-            Debug.Log("Leveled up! - " + level);
-            currentExperience -= experienceToNextLevel;
-            if (onLevelUpdate != null) onLevelUpdate(this, EventArgs.Empty);
+        _currentExperience += experienceGained;
+        while (_currentExperience >= _experienceToNextLevel) {
+            _level++;
+            Debug.Log("Leveled up! - " + _level);
+            _currentExperience -= _experienceToNextLevel;
+            if (OnLevelUpdate != null) OnLevelUpdate(this, EventArgs.Empty);
         }
 
         //if (onExperienceUpdate != null) onExperienceUpdate(this, EventArgs.Empty);
@@ -36,7 +36,7 @@ public class LevelSystem {
     }
 
     public int GetLevel() {
-        return level;
+        return _level;
     }
     
 }

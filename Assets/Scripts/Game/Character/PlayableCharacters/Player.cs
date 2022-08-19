@@ -7,24 +7,24 @@ public class Player : Character {
     // This script represents a playable character which derives from a base character
 
     // Skill and leveling
-    public int maxSkillPoints;
-    public int currentSkillPoints;
+    public int MaxSkillPoints;
+    public int CurrentSkillPoints;
 
     // maybe make skill an array later
-    public Skill skillOne;
-    private LevelSystem levelSystem;
-    [SerializeField] public PlayerHUD playerHUD;
+    public Skill SkillOne;
+    private LevelSystem _levelSystem;
+    [SerializeField] public PlayerHUD PlayerHUD;
 
     private void Awake() {
-        levelSystem = new LevelSystem();
-        playerHUD.SetLevelSystem(levelSystem);
-        this.SetLevelSystem(levelSystem);
+        // _levelSystem = new LevelSystem();
+        // PlayerHUD.SetLevelSystem(_levelSystem);
+        // this.SetLevelSystem(_levelSystem);
     }
 
     private void SetLevelSystem(LevelSystem levelSystem) {
-        this.levelSystem = levelSystem;
+        this._levelSystem = levelSystem;
 
-        levelSystem.onLevelUpdate += LevelSystem_OnLevelUpdate;
+        levelSystem.OnLevelUpdate += LevelSystem_OnLevelUpdate;
     }
 
     private void LevelSystem_OnLevelUpdate(object sender, EventArgs e) {

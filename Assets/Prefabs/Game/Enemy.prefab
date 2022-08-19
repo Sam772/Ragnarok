@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8cbd36ceed135479434e58c55ea412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Goblin
-  enemyHUD: {fileID: 2380057418636200564}
+  CharacterName: Goblin
+  EnemyHUD: {fileID: 2380057418636200564}
 --- !u!114 &2380057418636200564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,9 +198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9273df97126a3c14ba51e0af02757ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthText: {fileID: 6070690200745098313}
-  characterName: {fileID: 1708068021150973934}
-  character: {fileID: 6070690200015583644}
+  HealthText: {fileID: 6070690200745098313}
+  CharacterName: {fileID: 1708068021150973934}
+  Character: {fileID: 6070690200015583644}
 --- !u!1 &6070690200745098315
 GameObject:
   m_ObjectHideFlags: 0

@@ -185,15 +185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d180502cb5d7144bec02723dad8634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Berserker
-  maxHealth: 12
-  currentHealth: 1
-  strength: 11
-  defence: 1
-  maxSkillPoints: 10
-  currentSkillPoints: 6
-  skillOne: {fileID: 8108302349926111177}
-  playerHUD: {fileID: 1550821244910976425}
+  CharacterName: Berserker
+  MaxSkillPoints: 10
+  CurrentSkillPoints: 10
+  SkillOne: {fileID: 8108302349926111177}
+  PlayerHUD: {fileID: 1550821244910976425}
 --- !u!114 &1550821244910976425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,12 +202,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dccb6e7fb75a84388d39d5154792be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthText: {fileID: 5309284338710558254}
-  characterName: {fileID: 4529015184631061467}
-  character: {fileID: 5472197400885913290}
-  characterSkillPoints: {fileID: 7455275825979027673}
-  player: {fileID: 5472197400885913290}
-  playerLevel: {fileID: 206158769184824183}
+  HealthText: {fileID: 5309284338710558254}
+  CharacterName: {fileID: 4529015184631061467}
+  Character: {fileID: 5472197400885913290}
+  CharacterSkillPoints: {fileID: 7455275825979027673}
+  _player: {fileID: 5472197400885913290}
+  _playerLevel: {fileID: 206158769184824183}
 --- !u!114 &8108302349926111177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,10 +220,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ad813ceb703f045b50fe2b62fa6e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: Berserk
-  skillDescription: Increases Berserker's strength by 2.
-  skillCost: 2
-  gameHUD: {fileID: 0}
+  SkillName: Berserk
+  SkillDescription: Increases Berserker's strength by 2.
+  SkillCost: 2
+  _gameHUD: {fileID: 0}
 --- !u!1 &5309284338628735033
 GameObject:
   m_ObjectHideFlags: 0

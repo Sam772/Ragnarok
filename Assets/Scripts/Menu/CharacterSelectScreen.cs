@@ -6,27 +6,27 @@ using TMPro;
 public class CharacterSelectScreen : MenuScreen {
     // This script represents everything specific to the character selection screen
 
-    [SerializeField] private Character[] characters;
-    public int selectedCharacter;
-    [SerializeField] private TMP_Text characterText;
+    [SerializeField] private Character[] _characters;
+    public int SelectedCharacter;
+    [SerializeField] private TMP_Text _characterText;
 
     public void SetCharacter() {
-        PlayerPrefs.SetInt("selectedCharacter", selectedCharacter);
-        characterText.text = "You have selected the " + characters[selectedCharacter].characterName + "!";
+        PlayerPrefs.SetInt("selectedCharacter", SelectedCharacter);
+        _characterText.text = "You have selected the " + _characters[SelectedCharacter].CharacterName + "!";
     }
 
     public void NextCharacter() {
-        characters[selectedCharacter].gameObject.SetActive(false);
-        selectedCharacter = (selectedCharacter + 1) % characters.Length;
-        characters[selectedCharacter].gameObject.SetActive(true);
+        _characters[SelectedCharacter].gameObject.SetActive(false);
+        SelectedCharacter = (SelectedCharacter + 1) % _characters.Length;
+        _characters[SelectedCharacter].gameObject.SetActive(true);
     }
 
     public void PreviousCharacter() {
-        characters[selectedCharacter].gameObject.SetActive(false);
-        selectedCharacter--;
-        if (selectedCharacter < 0 ) {
-            selectedCharacter += characters.Length;
+        _characters[SelectedCharacter].gameObject.SetActive(false);
+        SelectedCharacter--;
+        if (SelectedCharacter < 0 ) {
+            SelectedCharacter += _characters.Length;
         }
-        characters[selectedCharacter].gameObject.SetActive(true);
+        _characters[SelectedCharacter].gameObject.SetActive(true);
     }
 }

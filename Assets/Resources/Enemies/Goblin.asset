@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a1a9f0b07eb894091fe15dc897a5bc, type: 3}
-  m_Name: Knight
+  m_Script: {fileID: 11500000, guid: a0b3a60ac2a620c42a0b290354f3ec95, type: 3}
+  m_Name: Goblin
   m_EditorClassIdentifier: 
-  Faction: 0
+  Faction: 1
   _stats:
     MaxHealth: 0
     CurrentHealth: 0
     Strength: 0
     Defence: 0
-  Prefab: {fileID: 6671063579448547941, guid: e649bb5bc44a930429e7e5f507eade96, type: 3}
-  Sprite: {fileID: 21300000, guid: beb03e0d9732af94db6ae2e5f5e4965a, type: 3}
-  PlayableCharacter: 0
+  Prefab: {fileID: 4444026604146560176, guid: b828ee719a6afaa439a4e53b09710d41, type: 3}
+  Sprite: {fileID: 21300000, guid: 44e4243f017bc534cbab43299818ee6c, type: 3}
+  Enemies: 0

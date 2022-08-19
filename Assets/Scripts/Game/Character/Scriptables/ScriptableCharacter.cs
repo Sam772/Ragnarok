@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class ScriptableCharacter : ScriptableObject {
     public Faction Faction;
-    [SerializeField] private Stats stats;
-    public Stats BaseStats => stats;
+    [SerializeField] private Stats _stats;
+    public Stats BaseStats => _stats;
     public Character Prefab;
+    public Sprite Sprite;
 }
 
 [Serializable]

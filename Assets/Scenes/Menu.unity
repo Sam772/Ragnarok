@@ -390,17 +390,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92678592}
   m_CullTransparentMesh: 1
---- !u!114 &234616369 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7914101108897020395, guid: bd79dd0151478cb4a8576ab5202a047b, type: 3}
-  m_PrefabInstance: {fileID: 819953020}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3d180502cb5d7144bec02723dad8634, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &256619900
 GameObject:
   m_ObjectHideFlags: 0
@@ -3448,12 +3437,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b4a18d8f40c99439941e3b19427951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScreen: {fileID: 1265099713}
-  fileSelectScreen: {fileID: 1514342493}
-  levelSelectScreen: {fileID: 1035627405}
-  mainMenuScreen: {fileID: 1750905349}
-  characterSelectScreen: {fileID: 1562359835}
-  settingsScreen: {fileID: 1951075151}
+  _startScreen: {fileID: 1265099713}
+  _fileSelectScreen: {fileID: 1514342493}
+  _mainMenuScreen: {fileID: 1750905349}
+  _characterSelectScreen: {fileID: 1562359835}
+  _settingsScreen: {fileID: 1951075151}
+  _levelSelectScreen: {fileID: 1035627405}
 --- !u!1 &976633012
 GameObject:
   m_ObjectHideFlags: 0
@@ -3909,17 +3898,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096435176}
   m_CullTransparentMesh: 1
---- !u!114 &1132774564 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5472197400885913290, guid: ec1278eabbd2cef49b6ca24a5aef4100, type: 3}
-  m_PrefabInstance: {fileID: 1956063523}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3d180502cb5d7144bec02723dad8634, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1133123701
 GameObject:
   m_ObjectHideFlags: 0
@@ -5538,11 +5516,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a3a5176c741c24ab9d3fb6b7bb49b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characters:
-  - {fileID: 234616369}
-  - {fileID: 1132774564}
-  selectedCharacter: 0
-  characterText: {fileID: 1775998447}
+  _characters:
+  - {fileID: 7914101108897020395, guid: bd79dd0151478cb4a8576ab5202a047b, type: 3}
+  - {fileID: 5472197400885913290, guid: ec1278eabbd2cef49b6ca24a5aef4100, type: 3}
+  SelectedCharacter: 1
+  _characterText: {fileID: 1775998447}
 --- !u!224 &1562359836
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6423,7 +6401,7 @@ GameObject:
   - component: {fileID: 1775998448}
   - component: {fileID: 1775998447}
   m_Layer: 5
-  m_Name: Text
+  m_Name: CharacterSelectText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
