@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameManager : StaticInstance<GameManager> {
+public class GameManager : StaticInstanceGameManager<GameManager> {
 
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
@@ -12,13 +12,15 @@ public class GameManager : StaticInstance<GameManager> {
     // This script manages the game while its running
     [Header("Managers")]
     [SerializeField] private BattleManager _battleManager;
-    public GameState State { get; private set; }
+    public GameState GameState { get; private set; }
 
     // Player, enemy, the ui and starting positions
     [Header("Player")]
-    //[SerializeField] private Player _player;
+    [SerializeField] private Player _player;
+    public Player Player => _player;
+
     [SerializeField] private PlayerHUD _playerHUD;
-    private Player _spawnedPlayer;
+    public PlayerHUD PlayerHUD => _playerHUD;
 
     // change into player input script
     [SerializeField] private GameObject _playerAttackButton;
@@ -26,129 +28,153 @@ public class GameManager : StaticInstance<GameManager> {
     [SerializeField] private GameObject _playerSkillBox;
 
     [Header("Enemy")]
-    //[SerializeField] private Enemy _enemy;
-    [SerializeField] private CharacterHUD _enemyHUD;
-    private Enemy _spawnedEnemy;
+    [SerializeField] private Enemy _enemy;
+    public Enemy Enemy => _enemy;
+    [SerializeField] private EnemyHUD _enemyHUD;
+    public EnemyHUD EnemyHUD => _enemyHUD;
     
-
     [Header("Game")]
     [SerializeField] private GameHUD _gameHUD;
+    public GameHUD GameHUD => _gameHUD;
 
     // List of playable characters
     [SerializeField] private Player[] _playableCharacters;
 
-    void Start() => ChangeState(GameState.Start);
+    void Start() => SetState(new Setup(this));
 
-    public void ChangeState(GameState newState) {
-        OnBeforeStateChanged?.Invoke(newState);
+    #region old code
 
-        State = newState;
-        switch (newState) {
-            case GameState.Start:
-                StartCoroutine(SetupBattleCoroutine());
-                break;
-            case GameState.PlayerTurn:
-                SetPlayerTurn();
-                break;
-            case GameState.EnemyTurn:
-                EnemyTurn();
-                break;
-            case GameState.Won:
-                EndBattle();
-                break;
-            case GameState.Lost:
-                EndBattle();
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
-        }
+    // private void SetupPlayerCharacterAndEnemy() {
+    //     //[SerializeField] private Player _player;
+    //     // private Player _spawnedPlayer;
+    //     //int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
+    //     //_player = _playableCharacters[selectedCharacter];
 
-        OnAfterStateChanged?.Invoke(newState);
+    //     //_spawnedPlayer = Instantiate(_player, _playerStartPosition);
+    //     //_spawnedEnemy = Instantiate(_enemy, _enemyStartPosition);
+    // }
+
+    // private void SetupBattleUI() {
+
+    //     //_gameHUD.SkillName.text = _player.SkillOne.SkillName.ToString();
+    //     //_gameHUD.SkillCost.text = _player.SkillOne.SkillCost.ToString();
+
+    //     //_playerHUD = _spawnedPlayer.PlayerHUD;
+    //     //_enemyHUD = _spawnedEnemy.EnemyHUD;
+
+    //     //var playerStats = _player.Stats;
+    //     //var enemyStats = _enemy.Stats;
+
+    //     //playerStats.CurrentHealth = playerStats.MaxHealth;
+    //     //_player.SetStats(playerStats);
+
+    //     //enemyStats.CurrentHealth = enemyStats.MaxHealth;
+    //     //_enemy.SetStats(enemyStats);
+
+    //     //_player.CurrentSkillPoints = _player.MaxSkillPoints;
+    //     //_playerHUD.CharacterSkillPoints.text = "SP: " + _player.MaxSkillPoints.ToString();
+    // }
+
+    // private void SetupPlayerSkills() {
+    //     // to reset stats properly if skills were used
+    //     // temporary solution
+
+    //     // if (_player.CharacterName == "Knight") {
+    //     //     var knightStats = _player.Stats;
+    //     //     knightStats.Defence = 3;
+    //     //     _player.SetStats(knightStats);
+    //     // }
+    //     // if (_player.CharacterName == "Berserker") {
+    //     //     var berserkStats = _player.Stats;
+    //     //     berserkStats.Strength = 7;
+    //     //     _player.SetStats(berserkStats);
+    //     // }
+    // }
+
+    // public void SetPlayerTurn() {
+    //     _gameHUD.SetGameStatusText("Choose an action!");
+    // }
+
+    // private IEnumerator SetupBattleCoroutine() {
+
+    //     _gameHUD.SetGameStatusText("Setting up battle!");
+
+    //     CharacterManager.Instance.SpawnCharacters();
+
+    //     _gameHUD.Initalise(_player, _enemy);
+
+    //     yield return new WaitForSeconds(1.5f);
+
+    //     //SetPlayerTurn();
+    //     ChangeState(GameState.PlayerTurn);
+    // }
+
+    // public void ChangeState(GameState newState) {
+    //     OnBeforeStateChanged?.Invoke(newState);
+
+    //     GameState = newState;
+    //     switch (newState) {
+    //         case GameState.Start:
+    //             //StartCoroutine(SetupBattleCoroutine());
+    //             break;
+    //         case GameState.PlayerTurn:
+    //             //SetPlayerTurn();
+    //             break;
+    //         case GameState.EnemyTurn:
+    //             EnemyTurn();
+    //             break;
+    //         case GameState.Won:
+    //             EndBattle();
+    //             break;
+    //         case GameState.Lost:
+    //             EndBattle();
+    //             break;
+    //         default:
+    //             throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
+    //     }
+
+    //     OnAfterStateChanged?.Invoke(newState);
         
-        print($"New state: {newState}");
-    }
+    //     print($"New state: {newState}");
+    // }
 
-    private IEnumerator SetupBattleCoroutine() {
+    // public void OnAttack() {
+    //     if (GameState != GameState.PlayerTurn) return;
 
-        _gameHUD.SetGameStatusText("Setting up battle!");
+    //     StartCoroutine(PlayerAttackCoroutine());
+    // }
 
-        CharacterManager.Instance.SpawnCharacters();
+    // private IEnumerator PlayerAttackCoroutine() {
+    //     var player = CharacterManager.Instance.PlayableCharacterScriptable;
+    //     var enemy = CharacterManager.Instance.EnemyScriptable;
 
-        SetupBattleUI();
-        //SetupPlayerSkills();
+    //     _gameHUD.SetGameStatusText(player.ScriptableCharacterName + " is attacking!");
 
-        yield return new WaitForSeconds(1.5f);
+    //     // called on the enemy, subtracting its health
+    //     _enemy.TakeDamage(player.BaseStats.Strength, enemy.BaseStats.Defence);
+        
+    //     //battleManager.Attack();
 
-        SetPlayerTurn();
-        ChangeState(GameState.PlayerTurn);
-    }
+    //     //_enemyHUD.HealthText.text = "HP: " + _enemy.Stats.CurrentHealth.ToString();
+    //     _enemyHUD.SetHealthText("HP: " + enemy.BaseStats.CurrentHealth);
 
+    //     GameState = GameState.EnemyTurn;
 
+    //     yield return new WaitForSeconds(1.5f);
 
-    private void SetupBattleUI() {
+    //     // if (_enemy.CheckIfDead(_enemy.gameObject)) {
+    //     //     ChangeState(GameState.Won);
+    //     // } else {
+    //     //     ChangeState(GameState.EnemyTurn);
+    //     // }
+    // }
 
-        //_gameHUD.SkillName.text = _player.SkillOne.SkillName.ToString();
-        //_gameHUD.SkillCost.text = _player.SkillOne.SkillCost.ToString();
+    // void Start() => ChangeState(GameState.Start);
 
-        //_playerHUD = _spawnedPlayer.PlayerHUD;
-        //_enemyHUD = _spawnedEnemy.EnemyHUD;
-
-        //var playerStats = _player.Stats;
-        //var enemyStats = _enemy.Stats;
-
-        //playerStats.CurrentHealth = playerStats.MaxHealth;
-        //_player.SetStats(playerStats);
-
-        //enemyStats.CurrentHealth = enemyStats.MaxHealth;
-        //_enemy.SetStats(enemyStats);
-
-        //_player.CurrentSkillPoints = _player.MaxSkillPoints;
-        //_playerHUD.CharacterSkillPoints.text = "SP: " + _player.MaxSkillPoints.ToString();
-    }
-
-    private void SetupPlayerSkills() {
-        // to reset stats properly if skills were used
-        // temporary solution
-
-        // if (_player.CharacterName == "Knight") {
-        //     var knightStats = _player.Stats;
-        //     knightStats.Defence = 3;
-        //     _player.SetStats(knightStats);
-        // }
-        // if (_player.CharacterName == "Berserker") {
-        //     var berserkStats = _player.Stats;
-        //     berserkStats.Strength = 7;
-        //     _player.SetStats(berserkStats);
-        // }
-    }
-
-    private void SetPlayerTurn() {
-        _gameHUD.SetGameStatusText("Choose an action!");
-    }
+    #endregion
 
     public void OnAttack() {
-        if (State != GameState.PlayerTurn) return;
-
-        StartCoroutine(PlayerAttackCoroutine());
-    }
-
-    private IEnumerator PlayerAttackCoroutine() {
-        //_gameHUD.Gamestatus.text = _player.CharacterName + " is attacking!";
-
-        // called on the enemy, subtracting its health
-        //_enemy.TakeDamage(_player.Stats.Strength, _enemy.Stats.Defence);
-        //battleManager.Attack();
-
-        //_enemyHUD.HealthText.text = "HP: " + _enemy.Stats.CurrentHealth.ToString();
-        State = GameState.EnemyTurn;
-
-        yield return new WaitForSeconds(1.5f);
-
-        // if (_enemy.CheckIfDead(_enemy.gameObject)) {
-        //     ChangeState(GameState.Won);
-        // } else {
-        //     ChangeState(GameState.EnemyTurn);
-        // }
+        StartCoroutine(State.Attack());
     }
 
     public IEnumerator PlayerDefendCoroutine() {
@@ -160,7 +186,7 @@ public class GameManager : StaticInstance<GameManager> {
         //_player.Defend();
         //Debug.Log("Player DEF: " + _player.Stats.Defence);
 
-        ChangeState(GameState.EnemyTurn);
+        //ChangeState(GameState.EnemyTurn);
 
         yield return new WaitForSeconds(1.5f);
 
@@ -169,7 +195,7 @@ public class GameManager : StaticInstance<GameManager> {
     }
 
     private void EnemyTurn() {
-        if (State != GameState.EnemyTurn) return;
+        if (GameState != GameState.EnemyTurn) return;
 
         // ai moment
         // if (_enemy.Stats.CurrentHealth <= 5) {
@@ -214,7 +240,7 @@ public class GameManager : StaticInstance<GameManager> {
     }
 
     public void OnSkill() {
-        if (State != GameState.PlayerTurn) return;
+        if (GameState != GameState.PlayerTurn) return;
 
         // show the skill box
         if (_playerSkillBox.activeSelf == false)  {
@@ -225,7 +251,7 @@ public class GameManager : StaticInstance<GameManager> {
     }
 
     public void PlayerSkillOne() {
-        if (State != GameState.PlayerTurn) return;
+        if (GameState != GameState.PlayerTurn) return;
         
         StartCoroutine(PlayerSkillOneCoroutine());
     }
@@ -247,11 +273,11 @@ public class GameManager : StaticInstance<GameManager> {
 
         yield return new WaitForSeconds(1.5f);
 
-        ChangeState(GameState.EnemyTurn);
+        //ChangeState(GameState.EnemyTurn);
     }
 
     public void OnDefend() {
-        if (State != GameState.PlayerTurn) return;
+        if (GameState != GameState.PlayerTurn) return;
 
         StartCoroutine(PlayerDefendCoroutine());
     }
@@ -261,7 +287,7 @@ public class GameManager : StaticInstance<GameManager> {
         _playerAttackButton.SetActive(false);
         _gameHUD.MenuButton.SetActive(true);
 
-        if (State == GameState.Won) {
+        if (GameState == GameState.Won) {
             _gameHUD.SetGameStatusText("You have won!");
             _playerHUD.LevelSystem.AddExperience(100);
         } else
@@ -278,13 +304,3 @@ public enum GameState {
     Won = 3, 
     Lost = 4 
 }
-
-    // private void SetupPlayerCharacterAndEnemy() {
-    //     //[SerializeField] private Player _player;
-    //     // private Player _spawnedPlayer;
-    //     //int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
-    //     //_player = _playableCharacters[selectedCharacter];
-
-    //     //_spawnedPlayer = Instantiate(_player, _playerStartPosition);
-    //     //_spawnedEnemy = Instantiate(_enemy, _enemyStartPosition);
-    // }

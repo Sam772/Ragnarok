@@ -7,7 +7,7 @@ public abstract class Character : MonoBehaviour {
     // This scripts represents the base character class used for both players and enemies
 
     // Attributes of a character
-    public string CharacterName;
+
     // public int maxHealth;
     // public int currentHealth;
     // public int strength;
@@ -24,10 +24,12 @@ public abstract class Character : MonoBehaviour {
         if (damage <= 0) damage = 1;
         //currentHealth -= damage;
 
-        var stats = Stats;
+        var enemy = CharacterManager.Instance.EnemyScriptable;
+        var stats = enemy.BaseStats;
         stats.CurrentHealth -= damage;
 
         SetStats(stats);
+        print(stats.CurrentHealth);
     }
 
     public void Defend() {

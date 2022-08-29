@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Knight
   m_EditorClassIdentifier: 
   Faction: 0
+  _characterName: Knight
   _stats:
-    MaxHealth: 0
-    CurrentHealth: 0
-    Strength: 0
-    Defence: 0
+    MaxHealth: 10
+    CurrentHealth: 10
+    Strength: 5
+    Defence: 3
   Prefab: {fileID: 6671063579448547941, guid: e649bb5bc44a930429e7e5f507eade96, type: 3}
   Sprite: {fileID: 21300000, guid: beb03e0d9732af94db6ae2e5f5e4965a, type: 3}
   PlayableCharacter: 0

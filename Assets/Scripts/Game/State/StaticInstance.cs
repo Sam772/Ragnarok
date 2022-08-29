@@ -23,3 +23,12 @@ public abstract class PersistentSingleton<T> : Singleton<T> where T : MonoBehavi
         DontDestroyOnLoad(gameObject);
     }
 }
+
+public abstract class StaticInstanceGameManager<T> : StaticInstance<T> where T : MonoBehaviour {
+    protected State State;
+
+    public void SetState(State state) {
+        State = state;
+        StartCoroutine(State.Start());
+    }
+}

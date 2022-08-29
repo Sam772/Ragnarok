@@ -12,7 +12,7 @@ public class CharacterSelectScreen : MenuScreen {
 
     public void SetCharacter() {
         PlayerPrefs.SetInt("selectedCharacter", SelectedCharacter);
-        _characterText.text = "You have selected the " + _characters[SelectedCharacter].CharacterName + "!";
+        //_characterText.text = "You have selected the " + _characters[SelectedCharacter].CharacterName + "!";
     }
 
     public void NextCharacter() {

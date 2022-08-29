@@ -23,8 +23,8 @@ public class ResourceSystem : StaticInstance<ResourceSystem> {
         _playableCharactersDictionary = PlayableCharacterList.ToDictionary(r => r.PlayableCharacter, r => r);
         _enemiesDictionary = EnemyList.ToDictionary(r => r.Enemies, r => r);
 
-        print("Keys: " + _playableCharactersDictionary.Keys);
-        print("Values: " + _playableCharactersDictionary.Values);
+        //print("Keys: " + _playableCharactersDictionary.Keys);
+        //print("Values: " + _playableCharactersDictionary.Values);
     }
 
     public ScriptablePlayer GetPlayableCharacter(PlayableCharacter playableCharacters) => _playableCharactersDictionary[playableCharacters];

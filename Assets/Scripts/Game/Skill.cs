@@ -20,7 +20,7 @@ public class Skill : MonoBehaviour {
             knight.SetStats(stats);
 
             knight.CurrentSkillPoints -= 3;
-            hud.CharacterSkillPoints.text = "SP: " + knight.CurrentSkillPoints.ToString();
+            //hud.CharacterSkillPoints.text = "SP: " + knight.CurrentSkillPoints.ToString();
         }
     }
 
@@ -33,7 +33,7 @@ public class Skill : MonoBehaviour {
             berserker.SetStats(stats);
 
             berserker.CurrentSkillPoints -= 2;
-            hud.CharacterSkillPoints.text = "SP: " + berserker.CurrentSkillPoints.ToString();
+            //hud.CharacterSkillPoints.text = "SP: " + berserker.CurrentSkillPoints.ToString();
         }
     }
 }

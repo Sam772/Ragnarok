@@ -7,15 +7,20 @@ public class PlayerHUD : CharacterHUD {
     // This scripts represents the player ui which derives from a base character ui
 
     // Make this private and set the value here
-    [SerializeField] public TMP_Text CharacterSkillPoints;
-    [SerializeField] private Player _player;
+    //[SerializeField] public TMP_Text CharacterSkillPoints;
+    //[SerializeField] private Player _player;
     [SerializeField] private TMP_Text _playerLevel;
     public LevelSystem LevelSystem;
+    [SerializeField] private TMP_Text _playerName;
+    [SerializeField] private TMP_Text _playerHealthText;
 
-    private void Start() {
-        CharacterName.text = _player.CharacterName;
-        HealthText.text = "HP: " + _player.Stats.MaxHealth.ToString();
-        CharacterSkillPoints.text = "SP: " + _player.MaxSkillPoints.ToString();
+    public void InitalisePlayer(Character character, ScriptablePlayer player) {
+        base.Initalise(character);
+        
+        _playerName.text = player.ScriptableCharacterName;
+        _playerHealthText.text = "HP: " + player.BaseStats.MaxHealth;
+
+        //CharacterSkillPoints.text = "SP: " + _player.MaxSkillPoints.ToString();
     }
 
     private void SetLevel(int level) {
@@ -32,6 +37,10 @@ public class PlayerHUD : CharacterHUD {
 
     private void LevelSystem_onLevelUpdate(object sender, System.EventArgs e) {
         SetLevel(LevelSystem.GetLevel());
+    }
+
+    public void SetHealthText(string healthText) {
+        _playerHealthText.text = healthText;
     }
 
 
