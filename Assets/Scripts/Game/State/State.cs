@@ -21,4 +21,8 @@ public abstract class State {
     public virtual IEnumerator Defend() {
         yield break;
     }
+
+    public virtual IEnumerator Skill() {
+        yield break;
+    }
 }
