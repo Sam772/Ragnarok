@@ -8,15 +8,13 @@ public class Won : State {
     }
 
     public override IEnumerator Start() {
-    //      _playerAttackButton.SetActive(false);
-    //     _gameHUD.MenuButton.SetActive(true);
+        GameManager.PlayerAttackButton.SetActive(false);
+        GameManager.GameHUD.MenuButton.SetActive(true);
 
-    //     if (GameState == GameState.Won) {
-    //         _gameHUD.SetGameStatusText("You have won!");
-    //         _playerHUD.LevelSystem.AddExperience(100);
-    //     } else
-    //         _gameHUD.SetGameStatusText("You have lost!");
-    // }
+        // probably doesnt work
+        GameManager.PlayerHUD.LevelSystem.AddExperience(100);
+        
+        GameManager.GameHUD.SetGameStatusText("You have won!");
         yield break;
     }
 }

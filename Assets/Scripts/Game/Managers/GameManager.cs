@@ -7,8 +7,6 @@ using TMPro;
 public class GameManager : StaticInstanceGameManager<GameManager> {
 
     // This script manages the game while its running
-    [Header("Managers")]
-    [SerializeField] private BattleManager _battleManager;
 
     // Player, enemy, the ui and starting positions
     [Header("Player")]
@@ -20,21 +18,24 @@ public class GameManager : StaticInstanceGameManager<GameManager> {
 
     // change into player input script
     [SerializeField] private GameObject _playerAttackButton;
+    public GameObject PlayerAttackButton => _playerAttackButton;
+
     [SerializeField] private GameObject _playerSkillButton;
+    public GameObject PlayerSkillButton => _playerSkillButton;
+
     [SerializeField] private GameObject _playerSkillBox;
+    public GameObject PlayerSkillBox => _playerSkillBox;
 
     [Header("Enemy")]
     [SerializeField] private Enemy _enemy;
     public Enemy Enemy => _enemy;
+    
     [SerializeField] private EnemyHUD _enemyHUD;
     public EnemyHUD EnemyHUD => _enemyHUD;
     
     [Header("Game")]
     [SerializeField] private GameHUD _gameHUD;
     public GameHUD GameHUD => _gameHUD;
-
-    // List of playable characters
-    [SerializeField] private Player[] _playableCharacters;
 
     void Start() => SetState(new Setup(this));
 

@@ -42,4 +42,18 @@ public class Player : Character {
         // this.defence += 1;
         // Debug.Log("hp: " + this.maxHealth + " str: " + this.strength + " def: " + this.defence);
     }
+
+    public override void TakeDamage(int targetStrength, int myDefence) {
+        int damage = targetStrength - myDefence;
+        if (damage <= 0) damage = 1;
+
+        var player = CharacterManager.Instance.PlayableCharacterScriptable;
+        var stats = player.BaseStats;
+        
+        stats.CurrentHealth -= damage;
+
+        SetStats(stats);
+
+        GameManager.Instance.PlayerHUD.SetHealthText("HP: " + stats.CurrentHealth.ToString());
+    }
 }

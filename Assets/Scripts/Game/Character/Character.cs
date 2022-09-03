@@ -20,16 +20,8 @@ public abstract class Character : MonoBehaviour {
     }
 
     public virtual void TakeDamage(int targetStrength, int myDefence) {
-        int damage = targetStrength - myDefence;
-        if (damage <= 0) damage = 1;
+
         //currentHealth -= damage;
-
-        var enemy = CharacterManager.Instance.EnemyScriptable;
-        var stats = enemy.BaseStats;
-        stats.CurrentHealth -= damage;
-
-        SetStats(stats);
-        print(stats.CurrentHealth);
     }
 
     public void Defend() {
@@ -56,7 +48,7 @@ public abstract class Character : MonoBehaviour {
         Debug.Log("Player DEF: " + stats.Defence);
     }
 
-    public bool CheckIfDead(GameObject character) {
+    public bool CheckIfDead(Character character) {
         if (Stats.CurrentHealth <= 0)
             return true;
         else

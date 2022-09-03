@@ -21,15 +21,13 @@ public class PlayerTurn : State {
         // called on the enemy, subtracting its health
         GameManager.Enemy.TakeDamage(player.BaseStats.Strength, enemy.BaseStats.Defence);
 
-        GameManager.EnemyHUD.SetHealthText("HP: " + enemy.BaseStats.CurrentHealth);
-
         yield return new WaitForSeconds(1.5f);
 
-        // if (_enemy.CheckIfDead(_enemy.gameObject)) {
+        if (GameManager.Enemy.CheckIfDead(GameManager.Enemy)) {
             GameManager.SetState(new Won(GameManager));
-        // } else {
+        } else {
             GameManager.SetState(new EnemyTurn(GameManager));
-        // }
+        }
     }
 
     public override IEnumerator Defend() {

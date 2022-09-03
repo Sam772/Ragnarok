@@ -8,28 +8,35 @@ public class EnemyTurn : State {
     }
 
     public override IEnumerator Start() {
+        GameManager.GameHUD.SetGameStatusText("Enemy turn!");
+        
+        var enemy = CharacterManager.Instance.EnemyScriptable;
+
+        yield return new WaitForSeconds(0.5f);
+
         // ai moment
-        // if (_enemy.Stats.CurrentHealth <= 5) {
-        //     StartCoroutine(EnemyDefendCoroutine());
-        // } else {
-        //     StartCoroutine(EnemyAttackCoroutine());
-        // }
-        yield break;
+        if (enemy.BaseStats.CurrentHealth <= 5) {
+            GameManager.OnDefend();
+        } else {
+            GameManager.OnAttack();
+        }
     }
 
     public override IEnumerator Attack() {
-        //_gameHUD.Gamestatus.text = _enemy.CharacterName + " is attacking!";
-        //_player.TakeDamage(_enemy.Stats.Strength, _player.Stats.Defence);
-        //_playerHUD.HealthText.text = "HP: " + _player.Stats.CurrentHealth.ToString();
+        var player = CharacterManager.Instance.PlayableCharacterScriptable;
+        var enemy = CharacterManager.Instance.EnemyScriptable;
+
+        GameManager.GameHUD.SetGameStatusText(enemy.ScriptableCharacterName + " is attacking!");
+
+        GameManager.Player.TakeDamage(enemy.BaseStats.Strength, player.BaseStats.Defence);
 
         yield return new WaitForSeconds(1.5f);
 
-        // if (_player.CheckIfDead(_player.gameObject)) {
-        //     ChangeState(GameState.Lost);
-        // } else {
-        //     ChangeState(GameState.PlayerTurn);
-        //     SetPlayerTurn();
-        // }
+        if (GameManager.Player.CheckIfDead(GameManager.Player)) {
+            GameManager.SetState(new Lost(GameManager));
+        } else {
+            GameManager.SetState(new PlayerTurn(GameManager));
+        }
     }
 
     public override IEnumerator Defend() {

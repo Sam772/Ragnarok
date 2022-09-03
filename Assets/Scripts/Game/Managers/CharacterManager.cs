@@ -15,6 +15,9 @@ public class CharacterManager : StaticInstance<CharacterManager> {
     private ScriptableEnemy _enemyScriptable;
     public ScriptableEnemy EnemyScriptable => _enemyScriptable;
 
+    // List of playable characters
+    [SerializeField] private Player[] _playableCharacters;
+
     public void SpawnCharacters() {
         SpawnPlayableCharacter(PlayableCharacter.Knight, _playerSpawnPosition);
         SpawnEnemy(Enemies.Goblin, _enemySpawnPosition);

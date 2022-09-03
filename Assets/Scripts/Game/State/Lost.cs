@@ -8,15 +8,9 @@ public class Lost : State {
     }
 
     public override IEnumerator Start() {
-        // _playerAttackButton.SetActive(false);
-        // _gameHUD.MenuButton.SetActive(true);
-
-        // if (GameState == GameState.Won) {
-        //     _gameHUD.SetGameStatusText("You have won!");
-        //     _playerHUD.LevelSystem.AddExperience(100);
-        // } else
-        //     _gameHUD.SetGameStatusText("You have lost!");
-        // }
+        GameManager.PlayerAttackButton.SetActive(false);
+        GameManager.GameHUD.MenuButton.SetActive(true);
+        GameManager.GameHUD.SetGameStatusText("You have lost!");
         yield break;
     }
 }
