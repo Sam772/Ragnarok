@@ -16,6 +16,8 @@ public class PlayerHUD : CharacterHUD {
 
     public void InitalisePlayer(Character character, ScriptablePlayer player) {
         base.Initalise(character);
+
+        player.Prefab.SetStats(player.BaseStats);
         
         _playerName.text = player.ScriptableCharacterName;
         _playerHealthText.text = "HP: " + player.BaseStats.MaxHealth;

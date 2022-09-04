@@ -10,7 +10,9 @@ public class Lost : State {
     public override IEnumerator Start() {
         GameManager.PlayerAttackButton.SetActive(false);
         GameManager.GameHUD.MenuButton.SetActive(true);
+
         GameManager.GameHUD.SetGameStatusText("You have lost!");
+        
         yield break;
     }
 }

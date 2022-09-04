@@ -12,6 +12,7 @@ public abstract class Character : MonoBehaviour {
     // public int currentHealth;
     // public int strength;
     // public int defence;
+    public CharacterAction CharacterAction;
 
     public Stats Stats { get; private set; }
 
@@ -19,33 +20,12 @@ public abstract class Character : MonoBehaviour {
         Stats = stats;
     }
 
-    public virtual void TakeDamage(int targetStrength, int myDefence) {
+    public virtual void TakeDamage(ScriptablePlayer player, ScriptableEnemy enemy) {
 
-        //currentHealth -= damage;
     }
 
-    public void Defend() {
-        //defence *= 2;
+    public virtual void Defend(ScriptableCharacter character) {
 
-        var stats = Stats;
-        stats.Defence *= 2;
-        
-        SetStats(stats);
-    }
-
-    public IEnumerator ReturnToOriginalDefence() {
-        yield return new WaitForSeconds(2f);
-
-        // bug here if too fast
-        
-        //defence /= 2;
-
-        var stats = Stats;
-        stats.Defence /= 2;
-        
-        SetStats(stats);
-
-        Debug.Log("Player DEF: " + stats.Defence);
     }
 
     public bool CheckIfDead(Character character) {
@@ -54,4 +34,10 @@ public abstract class Character : MonoBehaviour {
         else
             return false;
     }
+}
+
+public enum CharacterAction {
+    Idling = 0,
+    Attacking = 1,
+    Defending = 2
 }

@@ -11,8 +11,8 @@ public class Won : State {
         GameManager.PlayerAttackButton.SetActive(false);
         GameManager.GameHUD.MenuButton.SetActive(true);
 
-        // probably doesnt work
-        GameManager.PlayerHUD.LevelSystem.AddExperience(100);
+        // currently broken
+        // GameManager.PlayerHUD.LevelSystem.AddExperience(100);
         
         GameManager.GameHUD.SetGameStatusText("You have won!");
         yield break;

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameHUD : MonoBehaviour {
     // This script represents the game ui which isn't attached to a character or enemy
-
     [SerializeField] private TMP_Text _gamestatus;
     [SerializeField] public TMP_Text SkillName;
     [SerializeField] public TMP_Text SkillCost;
@@ -26,7 +25,7 @@ public class GameHUD : MonoBehaviour {
     public void InitaliseEnemyHUD(Enemy enemy) {
         _enemyHUD.Initalise(enemy);
     }
-
+    
     public void BackToMenu() {
         SceneManager.LoadScene("Menu");
     }

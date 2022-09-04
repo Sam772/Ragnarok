@@ -17,6 +17,7 @@ public class GameManager : StaticInstanceGameManager<GameManager> {
     public PlayerHUD PlayerHUD => _playerHUD;
 
     // change into player input script
+    [Header("PlayerInput")]
     [SerializeField] private GameObject _playerAttackButton;
     public GameObject PlayerAttackButton => _playerAttackButton;
 
@@ -25,6 +26,9 @@ public class GameManager : StaticInstanceGameManager<GameManager> {
 
     [SerializeField] private GameObject _playerSkillBox;
     public GameObject PlayerSkillBox => _playerSkillBox;
+
+    [SerializeField] private GameObject _playerDefendButton;
+    public GameObject PlayerDefendButton => _playerDefendButton;
 
     [Header("Enemy")]
     [SerializeField] private Enemy _enemy;

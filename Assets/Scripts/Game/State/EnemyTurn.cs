@@ -28,9 +28,12 @@ public class EnemyTurn : State {
 
         GameManager.GameHUD.SetGameStatusText(enemy.ScriptableCharacterName + " is attacking!");
 
-        GameManager.Player.TakeDamage(enemy.BaseStats.Strength, player.BaseStats.Defence);
+        GameManager.Player.TakeDamage(player, enemy);
 
         yield return new WaitForSeconds(1.5f);
+
+        GameManager.PlayerAttackButton.SetActive(true);
+        GameManager.PlayerDefendButton.SetActive(true);
 
         if (GameManager.Player.CheckIfDead(GameManager.Player)) {
             GameManager.SetState(new Lost(GameManager));
@@ -40,22 +43,22 @@ public class EnemyTurn : State {
     }
 
     public override IEnumerator Defend() {
-        // _gameHUD.Gamestatus.text = _enemy.CharacterName + " is defending!";
+        var enemy = CharacterManager.Instance.EnemyScriptable;
 
-        // Debug.Log("Enemy DEF: " + _enemy.Stats.Defence);
+        GameManager.GameHUD.SetGameStatusText(enemy.ScriptableCharacterName + " is defending!");
 
-        // // should double enemy defence
-        // _enemy.Defend();
-        // Debug.Log("Enemy DEF: " + _enemy.Stats.Defence);
+        //Debug.Log("Player DEF: " + enemy.BaseStats.Defence);
+
+        GameManager.Enemy.Defend(enemy);
+
+        //Debug.Log("Player DEF: " + enemy.BaseStats.Defence);
 
         yield return new WaitForSeconds(1.5f);
 
-        // ensure enemy defence is always what it originally is after enemy attacks
-        // StartCoroutine(_enemy.ReturnToOriginalDefence());
+        GameManager.PlayerAttackButton.SetActive(true);
+        GameManager.PlayerDefendButton.SetActive(true);
 
-        // Debug.Log("Enemy DEF: " + _enemy.Stats.Defence);
-
-        // ChangeState(GameState.PlayerTurn);
+        GameManager.SetState(new PlayerTurn(GameManager));
     }
 
     public override IEnumerator Skill() {

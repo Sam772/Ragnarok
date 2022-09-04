@@ -18,8 +18,10 @@ public class PlayerTurn : State {
 
         GameManager.GameHUD.SetGameStatusText(player.ScriptableCharacterName + " is attacking!");
 
+        GameManager.PlayerAttackButton.SetActive(false);
+
         // called on the enemy, subtracting its health
-        GameManager.Enemy.TakeDamage(player.BaseStats.Strength, enemy.BaseStats.Defence);
+        GameManager.Enemy.TakeDamage(player, enemy);
 
         yield return new WaitForSeconds(1.5f);
 
@@ -31,20 +33,22 @@ public class PlayerTurn : State {
     }
 
     public override IEnumerator Defend() {
-        //_gameHUD.Gamestatus.text = _player.CharacterName + " is defending!";
+        //issue: always referencing player
+        var player = CharacterManager.Instance.PlayableCharacterScriptable;
 
-        //Debug.Log("Player DEF: " + _player.Stats.Defence);
+        GameManager.GameHUD.SetGameStatusText(player.ScriptableCharacterName + " is defending!");
 
-        // should double player defence
-        //_player.Defend();
-        //Debug.Log("Player DEF: " + _player.Stats.Defence);
+        //Debug.Log("Player DEF: " + player.BaseStats.Defence);
 
-        //ChangeState(GameState.EnemyTurn);
+        GameManager.Player.Defend(player);
+
+        GameManager.PlayerDefendButton.SetActive(false);
+
+        //Debug.Log("Player DEF: " + player.BaseStats.Defence);
 
         yield return new WaitForSeconds(1.5f);
 
-        // ensure player defence is always what it originally is after enemy attacks
-        //StartCoroutine(_player.ReturnToOriginalDefence());
+        GameManager.SetState(new EnemyTurn(GameManager));
     }
 
     public override IEnumerator Skill() {

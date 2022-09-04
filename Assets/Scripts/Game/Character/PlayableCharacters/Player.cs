@@ -43,17 +43,33 @@ public class Player : Character {
         // Debug.Log("hp: " + this.maxHealth + " str: " + this.strength + " def: " + this.defence);
     }
 
-    public override void TakeDamage(int targetStrength, int myDefence) {
-        int damage = targetStrength - myDefence;
-        if (damage <= 0) damage = 1;
+    public override void TakeDamage(ScriptablePlayer player, ScriptableEnemy enemy) {
 
-        var player = CharacterManager.Instance.PlayableCharacterScriptable;
-        var stats = player.BaseStats;
-        
-        stats.CurrentHealth -= damage;
+        enemy.Prefab.CharacterAction = CharacterAction.Attacking;
 
-        SetStats(stats);
+        var playerStats = player.Prefab.Stats;
+        var enemyStats = enemy.Prefab.Stats;
 
-        GameManager.Instance.PlayerHUD.SetHealthText("HP: " + stats.CurrentHealth.ToString());
+        int damage = enemyStats.Strength - playerStats.Defence;
+
+        if (player.Prefab.CharacterAction == CharacterAction.Defending) {
+            damage /= 2;
+        }
+
+        if (damage <= 0) { 
+            damage = 1;
+        }
+
+        playerStats.CurrentHealth -= damage;
+
+        //print("player health: " + playerStats.CurrentHealth);
+
+        SetStats(playerStats);
+
+        GameManager.Instance.PlayerHUD.SetHealthText("HP: " + playerStats.CurrentHealth.ToString());
+    }
+
+    public override void Defend(ScriptableCharacter player) {
+        player.Prefab.CharacterAction = CharacterAction.Defending;
     }
 }
