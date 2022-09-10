@@ -8,7 +8,7 @@ public class Won : State {
     }
 
     public override IEnumerator Start() {
-        GameManager.PlayerAttackButton.SetActive(false);
+        GameManager.GameHUD.PlayerAttackButton.SetActive(false);
         GameManager.GameHUD.MenuButton.SetActive(true);
 
         // currently broken

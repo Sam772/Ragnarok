@@ -32,8 +32,8 @@ public class EnemyTurn : State {
 
         yield return new WaitForSeconds(1.5f);
 
-        GameManager.PlayerAttackButton.SetActive(true);
-        GameManager.PlayerDefendButton.SetActive(true);
+        GameManager.GameHUD.PlayerAttackButton.SetActive(true);
+        GameManager.GameHUD.PlayerDefendButton.SetActive(true);
 
         if (GameManager.Player.CheckIfDead(GameManager.Player)) {
             GameManager.SetState(new Lost(GameManager));
@@ -55,8 +55,8 @@ public class EnemyTurn : State {
 
         yield return new WaitForSeconds(1.5f);
 
-        GameManager.PlayerAttackButton.SetActive(true);
-        GameManager.PlayerDefendButton.SetActive(true);
+        GameManager.GameHUD.PlayerAttackButton.SetActive(true);
+        GameManager.GameHUD.PlayerDefendButton.SetActive(true);
 
         GameManager.SetState(new PlayerTurn(GameManager));
     }

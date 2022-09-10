@@ -5,15 +5,7 @@ using UnityEngine;
 
 public class Player : Character {
     // This script represents a playable character which derives from a base character
-
-    // Skill and leveling
-    public int MaxSkillPoints;
-    public int CurrentSkillPoints;
-
-    // maybe make skill an array later
-    public Skill SkillOne;
     private LevelSystem _levelSystem;
-    [SerializeField] public PlayerHUD PlayerHUD;
 
     private void Awake() {
         // _levelSystem = new LevelSystem();
@@ -66,10 +58,14 @@ public class Player : Character {
 
         SetStats(playerStats);
 
-        GameManager.Instance.PlayerHUD.SetHealthText("HP: " + playerStats.CurrentHealth.ToString());
+        GameManager.Instance.GameHUD.PlayerHUD.SetHealthText("HP: " + playerStats.CurrentHealth.ToString());
     }
 
     public override void Defend(ScriptableCharacter player) {
         player.Prefab.CharacterAction = CharacterAction.Defending;
+    }
+
+    public void UseSkill(ScriptableCharacter player) {
+
     }
 }

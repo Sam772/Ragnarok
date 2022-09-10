@@ -5,28 +5,16 @@ using TMPro;
 
 public abstract class Character : MonoBehaviour {
     // This scripts represents the base character class used for both players and enemies
-
-    // Attributes of a character
-
-    // public int maxHealth;
-    // public int currentHealth;
-    // public int strength;
-    // public int defence;
     public CharacterAction CharacterAction;
-
     public Stats Stats { get; private set; }
 
     public virtual void SetStats(Stats stats) {
         Stats = stats;
     }
 
-    public virtual void TakeDamage(ScriptablePlayer player, ScriptableEnemy enemy) {
+    public virtual void TakeDamage(ScriptablePlayer player, ScriptableEnemy enemy) { }
 
-    }
-
-    public virtual void Defend(ScriptableCharacter character) {
-
-    }
+    public virtual void Defend(ScriptableCharacter character) { }
 
     public bool CheckIfDead(Character character) {
         if (Stats.CurrentHealth <= 0)
@@ -39,5 +27,6 @@ public abstract class Character : MonoBehaviour {
 public enum CharacterAction {
     Idling = 0,
     Attacking = 1,
-    Defending = 2
+    Defending = 2,
+    UsingSkill = 3
 }

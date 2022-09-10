@@ -18,7 +18,7 @@ public class PlayerTurn : State {
 
         GameManager.GameHUD.SetGameStatusText(player.ScriptableCharacterName + " is attacking!");
 
-        GameManager.PlayerAttackButton.SetActive(false);
+        GameManager.GameHUD.PlayerAttackButton.SetActive(false);
 
         // called on the enemy, subtracting its health
         GameManager.Enemy.TakeDamage(player, enemy);
@@ -42,7 +42,7 @@ public class PlayerTurn : State {
 
         GameManager.Player.Defend(player);
 
-        GameManager.PlayerDefendButton.SetActive(false);
+        GameManager.GameHUD.PlayerDefendButton.SetActive(false);
 
         //Debug.Log("Player DEF: " + player.BaseStats.Defence);
 
@@ -53,16 +53,18 @@ public class PlayerTurn : State {
 
     public override IEnumerator Skill() {
         // show the skill box
-        // if (_playerSkillBox.activeSelf == false)  {
-        //     _playerSkillBox.SetActive(true);
-        // } else {
-        //     _playerSkillBox.SetActive(false);
-        // }
+        if (GameManager.GameHUD.PlayerSkillBox.activeSelf == false)  {
+            GameManager.GameHUD.PlayerSkillBox.SetActive(true);
+        } else {
+            GameManager.GameHUD.PlayerSkillBox.SetActive(false);
+        }
 
-        // _gameHUD.Gamestatus.text = _player.CharacterName + " used " + _player.SkillOne.SkillName + "!";
-        // State = GameState.EnemyTurn;
+        var player = CharacterManager.Instance.PlayableCharacterScriptable;
 
-        // // temporary solution
+        GameManager.GameHUD.SetGameStatusText(player.ScriptableCharacterName + " used " + "!");
+        // player.Skills.SkillName
+
+        // temporary solution
         // switch(_player.CharacterName) {
         //     case "Knight":
         //     _player.SkillOne.BolsterDefence(_player, _playerHUD);

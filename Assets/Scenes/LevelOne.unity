@@ -1554,7 +1554,11 @@ MonoBehaviour:
   SkillCost: {fileID: 1190732883}
   _playerHUD: {fileID: 1203128207}
   _enemyHUD: {fileID: 1093949374}
-  MenuButton: {fileID: 674415947}
+  _playerAttackButton: {fileID: 733629463}
+  _playerSkillButton: {fileID: 1549240553}
+  _playerSkillBox: {fileID: 1799902128}
+  _playerDefendButton: {fileID: 1929129032}
+  _menuButton: {fileID: 674415947}
 --- !u!1 &1046524542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2828,13 +2832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 6671063579448547941, guid: e649bb5bc44a930429e7e5f507eade96, type: 3}
-  _playerHUD: {fileID: 1203128207}
-  _playerAttackButton: {fileID: 733629463}
-  _playerSkillButton: {fileID: 1549240553}
-  _playerSkillBox: {fileID: 1799902128}
-  _playerDefendButton: {fileID: 1929129032}
   _enemy: {fileID: 4444026604146560176, guid: b828ee719a6afaa439a4e53b09710d41, type: 3}
-  _enemyHUD: {fileID: 1093949374}
   _gameHUD: {fileID: 930131818}
 --- !u!4 &2018819043
 Transform:

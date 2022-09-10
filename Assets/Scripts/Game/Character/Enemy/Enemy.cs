@@ -27,7 +27,7 @@ public class Enemy : Character {
 
         SetStats(enemyStats);
 
-        GameManager.Instance.EnemyHUD.SetHealthText("HP: " + enemyStats.CurrentHealth.ToString());
+        GameManager.Instance.GameHUD.EnemyHUD.SetHealthText("HP: " + enemyStats.CurrentHealth.ToString());
     }
 
     public override void Defend(ScriptableCharacter enemy) {
