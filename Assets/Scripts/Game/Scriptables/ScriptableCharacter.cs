@@ -19,6 +19,8 @@ public struct Stats {
     public int CurrentHealth;
     public int Strength;
     public int Defence;
+    public int MaxSkillPoints;
+    public int CurrentSkillPoints;
 }
 
 [Serializable]

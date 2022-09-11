@@ -5,14 +5,11 @@ using TMPro;
 
 public class PlayerHUD : CharacterHUD {
     // This scripts represents the player ui which derives from a base character ui
-
-    // Make this private and set the value here
-    //[SerializeField] public TMP_Text CharacterSkillPoints;
-    //[SerializeField] private Player _player;
     [SerializeField] private TMP_Text _playerLevel;
     public LevelSystem LevelSystem;
     [SerializeField] private TMP_Text _playerName;
     [SerializeField] private TMP_Text _playerHealthText;
+    [SerializeField] private TMP_Text _playerSkillPointsText;
 
     public void InitalisePlayer(Character character, ScriptablePlayer player) {
         base.Initalise(character);
@@ -21,8 +18,7 @@ public class PlayerHUD : CharacterHUD {
         
         _playerName.text = player.ScriptableCharacterName;
         _playerHealthText.text = "HP: " + player.BaseStats.MaxHealth;
-
-        //CharacterSkillPoints.text = "SP: " + _player.MaxSkillPoints.ToString();
+        _playerSkillPointsText.text = "SP: " + player.BaseStats.MaxSkillPoints;
     }
 
     private void SetLevel(int level) {
@@ -43,6 +39,10 @@ public class PlayerHUD : CharacterHUD {
 
     public void SetHealthText(string healthText) {
         _playerHealthText.text = healthText;
+    }
+
+    public void SetSkillPointsText(string skillPointsText) {
+        _playerSkillPointsText.text = skillPointsText;
     }
 
 

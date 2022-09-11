@@ -28,5 +28,5 @@ public enum CharacterAction {
     Idling = 0,
     Attacking = 1,
     Defending = 2,
-    UsingSkill = 3
+    ActivatingSkill = 3
 }

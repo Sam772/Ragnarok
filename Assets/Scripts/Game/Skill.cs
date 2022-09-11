@@ -1,13 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Skill : MonoBehaviour {
-    // This script is temporarily used for skills on playable characters
-    public string SkillName;
-    public string SkillDescription;
-    public int SkillCost;
-    [SerializeField] private GameHUD _gameHUD;
+    // This script is as a skill holder for playable characters
+    public ScriptableSkill ScriptableSkill;
+    public SkillState SkillState = SkillState.NotActivating;
+
+    private void Update() {
+        ChangeSkillState();
+
+        // need a way to tell if playerskillbutton is pressed
+    }
+
+    private void ChangeSkillState() {
+        switch(SkillState) {
+            case SkillState.NotActivating:
+                break;
+            case SkillState.Activating:
+                GameManager.Instance.GameHUD.PlayerSkillButton.SetActive(false);
+                ScriptableSkill.Activate(CharacterManager.Instance.PlayableCharacterScriptable);
+                break;
+            default:
+                break;
+        }
+    }
 
     // Temporarily keeping skills here
     public void BolsterDefence(Player knight, PlayerHUD hud) {
@@ -35,4 +53,9 @@ public class Skill : MonoBehaviour {
         //     //hud.CharacterSkillPoints.text = "SP: " + berserker.CurrentSkillPoints.ToString();
         // }
     }
+}
+
+public enum SkillState {
+    NotActivating = 0,
+    Activating = 1
 }

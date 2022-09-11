@@ -25,12 +25,13 @@ public class GameHUD : MonoBehaviour {
     [SerializeField] private GameObject _playerSkillButton;
     public GameObject PlayerSkillButton => _playerSkillButton;
 
-    [SerializeField] private GameObject _playerSkillBox;
-    public GameObject PlayerSkillBox => _playerSkillBox;
+    [SerializeField] private GameObject _playerSkillSubmenu;
+    public GameObject PlayerSkillSubMenu => _playerSkillSubmenu;
 
     [SerializeField] private GameObject _playerDefendButton;
     public GameObject PlayerDefendButton => _playerDefendButton;
-    
+
+    [Header("Other")]
     [SerializeField] private GameObject _menuButton;
     public GameObject MenuButton => _menuButton;
 

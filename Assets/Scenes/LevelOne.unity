@@ -449,7 +449,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2018819042}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: PlayerSkillOne
+        m_MethodName: OnSkill
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1556,7 +1556,7 @@ MonoBehaviour:
   _enemyHUD: {fileID: 1093949374}
   _playerAttackButton: {fileID: 733629463}
   _playerSkillButton: {fileID: 1549240553}
-  _playerSkillBox: {fileID: 1799902128}
+  _playerSkillSubmenu: {fileID: 1799902128}
   _playerDefendButton: {fileID: 1929129032}
   _menuButton: {fileID: 674415947}
 --- !u!1 &1046524542
@@ -2514,7 +2514,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2018819042}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnSkill
+        m_MethodName: OnSkillSubMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2583,7 +2583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1799902129}
   m_Layer: 5
-  m_Name: PlayerSkillBox
+  m_Name: PlayerSkillSubmenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2606,7 +2606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1833458281

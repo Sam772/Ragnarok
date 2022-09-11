@@ -22,6 +22,10 @@ public abstract class State {
         yield break;
     }
 
+    public virtual IEnumerator SkillSubMenu() {
+        yield break;
+    }
+
     public virtual IEnumerator Skill() {
         yield break;
     }

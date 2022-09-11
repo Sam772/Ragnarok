@@ -19,6 +19,8 @@ MonoBehaviour:
     CurrentHealth: 10
     Strength: 5
     Defence: 3
+    MaxSkillPoints: 6
+    CurrentSkillPoints: 6
   Prefab: {fileID: 6671063579448547941, guid: e649bb5bc44a930429e7e5f507eade96, type: 3}
   Sprite: {fileID: 21300000, guid: beb03e0d9732af94db6ae2e5f5e4965a, type: 3}
   PlayableCharacter: 0

@@ -52,16 +52,10 @@ public class PlayerTurn : State {
     }
 
     public override IEnumerator Skill() {
-        // show the skill box
-        if (GameManager.GameHUD.PlayerSkillBox.activeSelf == false)  {
-            GameManager.GameHUD.PlayerSkillBox.SetActive(true);
-        } else {
-            GameManager.GameHUD.PlayerSkillBox.SetActive(false);
-        }
-
         var player = CharacterManager.Instance.PlayableCharacterScriptable;
 
         GameManager.GameHUD.SetGameStatusText(player.ScriptableCharacterName + " used " + "!");
+        
         // player.Skills.SkillName
 
         // temporary solution
@@ -76,5 +70,16 @@ public class PlayerTurn : State {
         // }
 
         yield return new WaitForSeconds(1.5f);
+    }
+
+    public override IEnumerator SkillSubMenu() {
+        // show the skill submenu
+        if (GameManager.GameHUD.PlayerSkillSubMenu.activeSelf == false)  {
+            GameManager.GameHUD.PlayerSkillSubMenu.SetActive(true);
+        } else {
+            GameManager.GameHUD.PlayerSkillSubMenu.SetActive(false);
+        }
+
+        yield break;
     }
 }
