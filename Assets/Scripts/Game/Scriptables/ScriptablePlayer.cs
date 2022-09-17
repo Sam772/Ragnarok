@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Scriptable Playable Character")]
 public class ScriptablePlayer : ScriptableCharacter {
     public PlayableCharacter PlayableCharacter;
+    public ScriptableSkill[] Skills;
 }
 
 [Serializable]

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterAction: 0
+  _vigorUpSkill: {fileID: 11400000, guid: 755b462872b029b4795389f7d6b6ed38, type: 2}
 --- !u!1 &5842804538001084498
 GameObject:
   m_ObjectHideFlags: 0

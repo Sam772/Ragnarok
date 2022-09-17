@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Scriptable Character Skill")]
+[CreateAssetMenu(menuName = "Skills/New Scriptable Character Skill")]
 public class ScriptableSkill : ScriptableObject {
     [SerializeField] private SkillAttributes _skillAttributes;
     public SkillAttributes SkillAttributes => _skillAttributes;
-
-    public virtual void Activate(ScriptableCharacter player) { }
+    
+    public virtual void Activate(ScriptablePlayer player) { }
 }
 
 [Serializable]
@@ -17,3 +17,4 @@ public struct SkillAttributes {
     public string SkillDescription;
     public int SkillCost;
 }
+

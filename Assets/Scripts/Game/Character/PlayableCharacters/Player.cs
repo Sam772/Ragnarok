@@ -65,7 +65,5 @@ public class Player : Character {
         player.Prefab.CharacterAction = CharacterAction.Defending;
     }
 
-    public void UseSkill(ScriptableCharacter player) {
-
-    }
+    public virtual void ActivateSkill(ScriptablePlayer player) { }
 }

@@ -19,7 +19,7 @@ public class CharacterManager : StaticInstance<CharacterManager> {
     [SerializeField] private Player[] _playableCharacters;
 
     public void SpawnCharacters() {
-        SpawnPlayableCharacter(PlayableCharacter.Knight, _playerSpawnPosition);
+        SpawnPlayableCharacter(PlayableCharacter.Berserker, _playerSpawnPosition);
         SpawnEnemy(Enemies.Goblin, _enemySpawnPosition);
     }
 

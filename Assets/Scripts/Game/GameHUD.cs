@@ -25,8 +25,8 @@ public class GameHUD : MonoBehaviour {
     [SerializeField] private GameObject _playerSkillButton;
     public GameObject PlayerSkillButton => _playerSkillButton;
 
-    [SerializeField] private GameObject _playerSkillSubmenu;
-    public GameObject PlayerSkillSubMenu => _playerSkillSubmenu;
+    [SerializeField] private GameObject _playerSkillSubMenu;
+    public GameObject PlayerSkillSubMenu => _playerSkillSubMenu;
 
     [SerializeField] private GameObject _playerDefendButton;
     public GameObject PlayerDefendButton => _playerDefendButton;
@@ -53,5 +53,18 @@ public class GameHUD : MonoBehaviour {
     }
     public void SetGameStatusText(string text) {
         _gamestatus.text = text;
+    }
+
+    public void RemovePlayerUI() {
+        _playerAttackButton.SetActive(false);
+        _playerDefendButton.SetActive(false);
+        _playerSkillButton.SetActive(false);
+        _playerSkillSubMenu.SetActive(false);
+    }
+
+    public void ReinitialisePlayerUI() {
+        _playerAttackButton.SetActive(true);
+        _playerDefendButton.SetActive(true);
+        _playerSkillButton.SetActive(true);
     }
 }

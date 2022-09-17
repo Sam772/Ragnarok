@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13c68a609e29c244a83edbbc021a8a7e, type: 3}
-  m_Name: BolsterDefence
+  m_Script: {fileID: 11500000, guid: d964f948f5b0ce54e8e26b721389cdf5, type: 3}
+  m_Name: VigorUp
   m_EditorClassIdentifier: 
   _skillAttributes:
-    SkillName: BolsterDefence
-    SkillDescription: Increases Knight's defence by 2.
+    SkillName: VigorUp
+    SkillDescription: Increases Berserker's strength by 2.
     SkillCost: 3

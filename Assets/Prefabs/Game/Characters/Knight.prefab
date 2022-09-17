@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5298110215216732854}
   - component: {fileID: 6671063579448547941}
-  - component: {fileID: 3803035445393225199}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -46,21 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterAction: 0
---- !u!114 &3803035445393225199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 434232768809892458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27ad813ceb703f045b50fe2b62fa6e97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameHUD: {fileID: 0}
-  ScriptableSkill: {fileID: 11400000, guid: 414939d036a4ac347b9f8d81bfeb6dcc, type: 2}
-  SkillState: 0
+  BolsterDefenceSkill: {fileID: 11400000, guid: bbd05aa074e58854aab30768ff8fcfc8, type: 2}
 --- !u!1 &8088669953760127162
 GameObject:
   m_ObjectHideFlags: 0
