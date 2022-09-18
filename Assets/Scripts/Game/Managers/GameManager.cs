@@ -1,8 +1,6 @@
 using UnityEngine;
 
 public class GameManager : StaticInstanceGameManager<GameManager> {
-    [SerializeField] private Player _player;
-    public Player Player => _player;
     [SerializeField] private Enemy _enemy;
     public Enemy Enemy => _enemy;
     [SerializeField] private GameHUD _gameHUD;

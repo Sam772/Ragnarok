@@ -13,36 +13,10 @@ public class Setup : State {
 
         CharacterManager.Instance.SpawnCharacters();
 
-        GameManager.GameHUD.Initalise(GameManager.Player, GameManager.Enemy);
+        GameManager.GameHUD.Initalise(CharacterManager.Instance.Player, GameManager.Enemy);
 
         yield return new WaitForSeconds(1.5f);
 
         GameManager.SetState(new PlayerTurn(GameManager));
     }
-
-    #region old code
-    
-    // int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
-    // _player = _playableCharacters[selectedCharacter];
-
-    // _gameHUD.SkillName.text = _player.SkillOne.SkillName.ToString();
-    // _gameHUD.SkillCost.text = _player.SkillOne.SkillCost.ToString();
-
-    // _playerHUD = _spawnedPlayer.PlayerHUD;
-    // _enemyHUD = _spawnedEnemy.EnemyHUD;
-
-    // _player.CurrentSkillPoints = _player.MaxSkillPoints;
-    //_playerHUD.CharacterSkillPoints.text = "SP: " + _player.MaxSkillPoints.ToString();
-
-    // if (_player.CharacterName == "Knight") {
-    //  var knightStats = _player.Stats;
-    //  knightStats.Defence = 3;
-    //  _player.SetStats(knightStats);
-
-    // if (_player.CharacterName == "Berserker") {
-    //  var berserkStats = _player.Stats;
-    //  berserkStats.Strength = 7;
-    //  _player.SetStats(berserkStats);
-
-    #endregion
 }

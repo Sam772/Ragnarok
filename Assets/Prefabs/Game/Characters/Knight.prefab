@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53511575e840171479d17d8d14ec5852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterAction: 0
-  BolsterDefenceSkill: {fileID: 11400000, guid: bbd05aa074e58854aab30768ff8fcfc8, type: 2}
+  CharacterAction: 1
+  _bolsterDefenceSkill: {fileID: 11400000, guid: bbd05aa074e58854aab30768ff8fcfc8, type: 2}
 --- !u!1 &8088669953760127162
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,8 +114,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1271892867
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: beb03e0d9732af94db6ae2e5f5e4965a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

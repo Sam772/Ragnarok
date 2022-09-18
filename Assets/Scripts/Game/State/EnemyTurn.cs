@@ -28,13 +28,13 @@ public class EnemyTurn : State {
 
         GameManager.GameHUD.SetGameStatusText(enemy.ScriptableCharacterName + " is attacking!");
 
-        GameManager.Player.TakeDamage(player, enemy);
+        CharacterManager.Instance.Player.TakeDamage(player, enemy);
 
         yield return new WaitForSeconds(1.5f);
 
         GameManager.GameHUD.ReinitialisePlayerUI();
 
-        if (GameManager.Player.CheckIfDead(GameManager.Player)) {
+        if (CharacterManager.Instance.Player.CheckIfDead(CharacterManager.Instance.Player)) {
             GameManager.SetState(new Lost(GameManager));
         } else {
             GameManager.SetState(new PlayerTurn(GameManager));

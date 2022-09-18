@@ -7,8 +7,10 @@ using UnityEngine;
 public class ScriptableSkill : ScriptableObject {
     [SerializeField] private SkillAttributes _skillAttributes;
     public SkillAttributes SkillAttributes => _skillAttributes;
-    
+    private bool _isUnlocked = false;
+
     public virtual void Activate(ScriptablePlayer player) { }
+    public void UnlockSkill() => _isUnlocked = true;
 }
 
 [Serializable]

@@ -10,22 +10,25 @@ public class CharacterManager : StaticInstance<CharacterManager> {
     [SerializeField] private PlayerHUD _playerHUD;
     [SerializeField] private EnemyHUD _enemyHUD;
 
+    [Header("Player")]
+    private Player _player;
+    public Player Player => _player;
     private ScriptablePlayer _playableCharacterScriptable;
     public ScriptablePlayer PlayableCharacterScriptable => _playableCharacterScriptable;
+
+    [Header("Enemy")]
     private ScriptableEnemy _enemyScriptable;
     public ScriptableEnemy EnemyScriptable => _enemyScriptable;
 
     // List of playable characters
-    [SerializeField] private Player[] _playableCharacters;
+    [SerializeField] private ScriptablePlayer[] _playableCharacters;
 
     public void SpawnCharacters() {
-        SpawnPlayableCharacter(PlayableCharacter.Berserker, _playerSpawnPosition);
+        SpawnPlayableCharacter(GetCharacterFromPrefs(), _playerSpawnPosition);
         SpawnEnemy(Enemies.Goblin, _enemySpawnPosition);
     }
 
     public void SpawnPlayableCharacter(PlayableCharacter playableCharacter, Transform transform) {
-        // add index of character selection
-
         // using var instead of field
         // var playableCharacterScriptable = ResourceSystem.Instance.GetPlayableCharacter(playableCharacter);
 
@@ -58,5 +61,15 @@ public class CharacterManager : StaticInstance<CharacterManager> {
         // apply buffs or whatever
 
         enemySpawn.SetStats(stats);
+    }
+
+    // replace this function in the spawnplayablecharacter call
+    public PlayableCharacter GetCharacterFromPrefs() {
+        // add index of character selection
+        int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
+
+        _player = (Player) _playableCharacters[selectedCharacter].Prefab;
+
+        return ResourceSystem.Instance.GetPlayableCharacterType(_playableCharacters[selectedCharacter]);
     }
 }

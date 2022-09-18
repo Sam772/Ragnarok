@@ -8,6 +8,7 @@ public class ResourceSystem : StaticInstance<ResourceSystem> {
     public List<ScriptablePlayer> PlayableCharacterList { get; private set; }
     public List<ScriptableEnemy> EnemyList { get; private set; }
     private Dictionary<PlayableCharacter, ScriptablePlayer> _playableCharactersDictionary;
+    private Dictionary<ScriptablePlayer, PlayableCharacter> _playableCharacterTypeDictionary;
     private Dictionary<Enemies, ScriptableEnemy> _enemiesDictionary;
 
     protected override void Awake() {
@@ -21,6 +22,7 @@ public class ResourceSystem : StaticInstance<ResourceSystem> {
         EnemyList = Resources.LoadAll<ScriptableEnemy>("Enemies").ToList();
 
         _playableCharactersDictionary = PlayableCharacterList.ToDictionary(r => r.PlayableCharacter, r => r);
+        _playableCharacterTypeDictionary = PlayableCharacterList.ToDictionary(r => r, r => r.PlayableCharacter);
         _enemiesDictionary = EnemyList.ToDictionary(r => r.Enemies, r => r);
 
         //print("Keys: " + _playableCharactersDictionary.Keys);
@@ -28,6 +30,7 @@ public class ResourceSystem : StaticInstance<ResourceSystem> {
     }
 
     public ScriptablePlayer GetPlayableCharacter(PlayableCharacter playableCharacters) => _playableCharactersDictionary[playableCharacters];
+    public PlayableCharacter GetPlayableCharacterType(ScriptablePlayer player) => _playableCharacterTypeDictionary[player];
     public ScriptableEnemy GetEnemy(Enemies enemies) => _enemiesDictionary[enemies];
     public ScriptablePlayer GetRandomPlayableCharacter() => PlayableCharacterList[Random.Range(0, PlayableCharacterList.Count)];
 }

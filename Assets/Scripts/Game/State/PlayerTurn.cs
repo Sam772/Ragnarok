@@ -40,7 +40,7 @@ public class PlayerTurn : State {
 
         //Debug.Log("Player DEF: " + player.BaseStats.Defence);
 
-        GameManager.Player.Defend(player);
+        CharacterManager.Instance.Player.Defend(player);
 
         GameManager.GameHUD.RemovePlayerUI();
 
@@ -59,7 +59,7 @@ public class PlayerTurn : State {
         // get skill name in better way
         // player.Skills.SkillName
 
-        GameManager.Player.ActivateSkill(player);
+        CharacterManager.Instance.Player.ActivateSkill(player);
 
         GameManager.GameHUD.RemovePlayerUI();
 
