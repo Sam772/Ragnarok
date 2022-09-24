@@ -4490,7 +4490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1265099712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5396,7 +5396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1562359835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5412,9 +5412,8 @@ MonoBehaviour:
   _characters:
   - {fileID: 11400000, guid: 4228fa8bf6e75644da20cdb85110ec3b, type: 2}
   - {fileID: 11400000, guid: 8d07fa48ea47517429410dc2958bb226, type: 2}
-  SelectedCharacter: 1
   _characterText: {fileID: 1775998447}
-  currentCharacterSpriteRenderer: {fileID: 2075093043}
+  _currentCharacterSpriteRenderer: {fileID: 2075093043}
 --- !u!224 &1562359836
 RectTransform:
   m_ObjectHideFlags: 0

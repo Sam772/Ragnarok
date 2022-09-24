@@ -15,10 +15,15 @@ MonoBehaviour:
   Faction: 1
   _characterName: Goblin
   _stats:
+    Level: 1
     MaxHealth: 10
     CurrentHealth: 10
     Strength: 5
     Defence: 2
+    MaxSkillPoints: 0
+    CurrentSkillPoints: 0
+    CurrentExperience: 0
+    ExperienceToNextLevel: 0
   Prefab: {fileID: 4444026604146560176, guid: b828ee719a6afaa439a4e53b09710d41, type: 3}
   Sprite: {fileID: 21300000, guid: 44e4243f017bc534cbab43299818ee6c, type: 3}
   Enemies: 0

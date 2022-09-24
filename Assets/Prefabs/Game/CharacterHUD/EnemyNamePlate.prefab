@@ -49,10 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9273df97126a3c14ba51e0af02757ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthText: {fileID: 796972230405471996}
-  _characterName: {fileID: 6847795593892417949}
-  _enemyHealthText: {fileID: 796972230405471996}
   _enemyName: {fileID: 6847795593892417949}
+  _enemyHealthText: {fileID: 796972230405471996}
+  _enemyLevel: {fileID: 2620109513271102120}
 --- !u!1 &796972230405471998
 GameObject:
   m_ObjectHideFlags: 0

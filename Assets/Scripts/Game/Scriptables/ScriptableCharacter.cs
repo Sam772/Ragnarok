@@ -14,13 +14,15 @@ public class ScriptableCharacter : ScriptableObject {
 }
 
 [Serializable]
-public struct Stats {
+public class Stats {
+    public int Level;
     public int MaxHealth;
     public int CurrentHealth;
     public int Strength;
     public int Defence;
     public int MaxSkillPoints;
     public int CurrentSkillPoints;
+    public int CurrentExperience;
 }
 
 [Serializable]

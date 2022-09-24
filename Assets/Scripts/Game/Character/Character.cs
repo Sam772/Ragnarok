@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public abstract class Character : MonoBehaviour {
+public abstract class Character : MonoBehaviour, ICharacter {
     // This scripts represents the base character class used for both players and enemies
     public CharacterAction CharacterAction;
     public Stats Stats { get; private set; }
 
-    public virtual void SetStats(Stats stats) {
+    public void SetStats(Stats stats) {
         Stats = stats;
     }
 
@@ -22,11 +22,13 @@ public abstract class Character : MonoBehaviour {
         else
             return false;
     }
+
+    public virtual void SetNewStats(ScriptablePlayer player) { }
 }
 
 public enum CharacterAction {
     Idling = 0,
     Attacking = 1,
     Defending = 2,
-    ActivatingSkill = 3
+    ActivatingSkill = 3,
 }

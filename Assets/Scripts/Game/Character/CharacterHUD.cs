@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public abstract class CharacterHUD : MonoBehaviour {
+public abstract class CharacterHUD : MonoBehaviour, IHud {
     // This scripts represents the base character ui used for both players and enemies
     private Character _character;
     public virtual void Initalise(Character character) {

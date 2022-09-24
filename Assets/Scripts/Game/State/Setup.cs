@@ -15,6 +15,8 @@ public class Setup : State {
 
         GameManager.GameHUD.Initalise(CharacterManager.Instance.Player, GameManager.Enemy);
 
+        ExperienceManager.Instance.GetExperienceData();
+
         yield return new WaitForSeconds(1.5f);
 
         GameManager.SetState(new PlayerTurn(GameManager));

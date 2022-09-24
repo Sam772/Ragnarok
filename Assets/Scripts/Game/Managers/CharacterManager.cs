@@ -34,11 +34,17 @@ public class CharacterManager : StaticInstance<CharacterManager> {
 
         _playableCharacterScriptable = ResourceSystem.Instance.GetPlayableCharacter(playableCharacter);
         var playerSpawn = Instantiate(_playableCharacterScriptable.Prefab, transform);
+        
+        // gets the original stats of the character
         var stats = _playableCharacterScriptable.BaseStats;
-
 
         // stat change example
         // stats.CurrentHealth += 20;
+
+        // set the level here
+        //stats.Level = PlayerPrefs.GetInt("level", stats.Level);
+        
+        // have a way to check which stats to use
 
         playerSpawn.SetStats(stats);
         

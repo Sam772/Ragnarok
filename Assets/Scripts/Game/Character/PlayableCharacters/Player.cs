@@ -5,35 +5,20 @@ using UnityEngine;
 
 public class Player : Character {
     // This script represents a playable character which derives from a base character
-    private LevelSystem _levelSystem;
 
-    private void Awake() {
-        // _levelSystem = new LevelSystem();
-        // PlayerHUD.SetLevelSystem(_levelSystem);
-        // this.SetLevelSystem(_levelSystem);
-    }
+    #region old exp code
 
-    private void SetLevelSystem(LevelSystem levelSystem) {
-        this._levelSystem = levelSystem;
+    // private void SetLevelSystem(ExperienceManager levelSystem) {
+    //     levelSystem.OnLevelUpdate += LevelSystem_OnLevelUpdate;
+    // }
 
-        levelSystem.OnLevelUpdate += LevelSystem_OnLevelUpdate;
-    }
+    // private void LevelSystem_OnLevelUpdate(object sender, EventArgs e) {
+    //     // Increase stats when player levels up
+    //     SetNewStats();
+    //     //Debug.Log(this.characterName + " leveled up!");
+    // }
 
-    private void LevelSystem_OnLevelUpdate(object sender, EventArgs e) {
-        // Increase stats when player levels up
-        SetNewStats();
-        //Debug.Log(this.characterName + " leveled up!");
-    }
-
-    private void SetNewStats() {
-        // For testing
-        // Debug.Log("hp: " + this.maxHealth + " str: " + this.strength + " def: " + this.defence);
-        // this.maxHealth += 5;
-        // this.currentHealth = this.maxHealth;
-        // this.strength += 2;
-        // this.defence += 1;
-        // Debug.Log("hp: " + this.maxHealth + " str: " + this.strength + " def: " + this.defence);
-    }
+    #endregion
 
     public override void TakeDamage(ScriptablePlayer player, ScriptableEnemy enemy) {
 
