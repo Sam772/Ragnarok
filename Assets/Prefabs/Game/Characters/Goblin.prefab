@@ -126,4 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45ff34cf13990049b48c54d24c190fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterAction: 0
+  CharacterAction: 3
+  _goblinPunchSkill: {fileID: 11400000, guid: 5f1012724dd4fa14584b34cf5843802a, type: 2}

@@ -9,7 +9,7 @@ public class ScriptableSkill : ScriptableObject {
     public SkillAttributes SkillAttributes => _skillAttributes;
     private bool _isUnlocked = false;
 
-    public virtual void Activate(ScriptablePlayer player) { }
+    public virtual void Activate(ScriptableCharacter player) { }
     public void UnlockSkill() => _isUnlocked = true;
 }
 

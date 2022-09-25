@@ -6,7 +6,7 @@ public class Berserker : Player {
     [SerializeField] private VigorUpSkill _vigorUpSkill;
     public VigorUpSkill VigorUpSkill => _vigorUpSkill;
 
-    public override void ActivateSkill(ScriptablePlayer player) {
+    public override void ActivateSkill(ScriptableCharacter player) {
         CharacterAction = CharacterAction.ActivatingSkill;
         
         VigorUpSkill.Activate(player);

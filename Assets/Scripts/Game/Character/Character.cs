@@ -7,9 +7,14 @@ public abstract class Character : MonoBehaviour, ICharacter {
     // This scripts represents the base character class used for both players and enemies
     public CharacterAction CharacterAction;
     public Stats Stats { get; private set; }
+    public ScriptableSkill[] Skills { get; private set; }
 
     public void SetStats(Stats stats) {
         Stats = stats;
+    }
+
+    public void SetSkills(ScriptableSkill[] skills) {
+        Skills = skills;
     }
 
     public virtual void TakeDamage(ScriptablePlayer player, ScriptableEnemy enemy) { }
@@ -24,6 +29,8 @@ public abstract class Character : MonoBehaviour, ICharacter {
     }
 
     public virtual void SetNewStats(ScriptablePlayer player) { }
+
+    public virtual void ActivateSkill(ScriptableCharacter player) { }
 }
 
 public enum CharacterAction {

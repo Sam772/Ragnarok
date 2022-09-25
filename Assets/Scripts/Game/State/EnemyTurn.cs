@@ -18,7 +18,11 @@ public class EnemyTurn : State {
         if (enemy.BaseStats.CurrentHealth <= 5) {
             GameManager.OnDefend();
         } else {
-            GameManager.OnAttack();
+            if (enemy.BaseStats.CurrentSkillPoints <= 2) {
+                GameManager.OnAttack();
+            } else {
+                GameManager.OnSkill();
+            }
         }
     }
 
@@ -60,6 +64,20 @@ public class EnemyTurn : State {
     }
 
     public override IEnumerator Skill() {
-        return base.Skill();
+        var enemy = CharacterManager.Instance.EnemyScriptable;
+
+        GameManager.GameHUD.SetGameStatusText(enemy.ScriptableCharacterName + " used " + enemy.Skills[0].SkillAttributes.SkillName + "!");
+
+        GameManager.Enemy.ActivateSkill(enemy);
+
+        yield return new WaitForSeconds(1.5f);
+
+        GameManager.GameHUD.ReinitialisePlayerUI();
+
+        if (CharacterManager.Instance.Player.CheckIfDead(CharacterManager.Instance.Player)) {
+            GameManager.SetState(new Lost(GameManager));
+        } else {
+            GameManager.SetState(new PlayerTurn(GameManager));
+        }
     }
 }

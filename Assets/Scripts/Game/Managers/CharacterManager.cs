@@ -38,6 +38,8 @@ public class CharacterManager : StaticInstance<CharacterManager> {
         // gets the original stats of the character
         var stats = _playableCharacterScriptable.BaseStats;
 
+        var skills = _playableCharacterScriptable.Skills;
+
         // stat change example
         // stats.CurrentHealth += 20;
 
@@ -47,6 +49,7 @@ public class CharacterManager : StaticInstance<CharacterManager> {
         // have a way to check which stats to use
 
         playerSpawn.SetStats(stats);
+        playerSpawn.SetSkills(skills);
         
         _playerHUD.Initalise(_playableCharacterScriptable.Prefab);
         _playerHUD.InitalisePlayer(_playableCharacterScriptable.Prefab, _playableCharacterScriptable);

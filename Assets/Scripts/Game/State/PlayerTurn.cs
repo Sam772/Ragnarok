@@ -55,9 +55,6 @@ public class PlayerTurn : State {
         var player = CharacterManager.Instance.PlayableCharacterScriptable;
 
         GameManager.GameHUD.SetGameStatusText(player.ScriptableCharacterName + " used " + player.Skills[0].SkillAttributes.SkillName + "!");
-        
-        // get skill name in better way
-        // player.Skills.SkillName
 
         CharacterManager.Instance.Player.ActivateSkill(player);
 

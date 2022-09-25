@@ -49,6 +49,4 @@ public class Player : Character {
     public override void Defend(ScriptableCharacter player) {
         player.Prefab.CharacterAction = CharacterAction.Defending;
     }
-
-    public virtual void ActivateSkill(ScriptablePlayer player) { }
 }

@@ -11,6 +11,7 @@ public class ScriptableCharacter : ScriptableObject {
     public Stats BaseStats => _stats;
     public Character Prefab;
     public Sprite Sprite;
+    public ScriptableSkill[] Skills;
 }
 
 [Serializable]

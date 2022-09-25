@@ -8,10 +8,11 @@ public class Knight : Player {
 
     // get the array of skills from scriptableplayer instead
 
-    public override void ActivateSkill(ScriptablePlayer player) {
+    public override void ActivateSkill(ScriptableCharacter player) {
         CharacterAction = CharacterAction.ActivatingSkill;
 
         BolsterDefenceSkill.Activate(player);
+        //Skills[0].Activate(player);
     }
 
     public override void SetNewStats(ScriptablePlayer player) {
