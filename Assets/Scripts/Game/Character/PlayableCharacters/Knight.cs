@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Knight : Player {
-    [SerializeField] private BolsterDefenceSkill _bolsterDefenceSkill;
-    public BolsterDefenceSkill BolsterDefenceSkill => _bolsterDefenceSkill;
-
-    // get the array of skills from scriptableplayer instead
 
     public override void ActivateSkill(ScriptableCharacter player) {
-        CharacterAction = CharacterAction.ActivatingSkill;
+        CharacterAction = CharacterAction.UsingSkill;
 
-        BolsterDefenceSkill.Activate(player);
-        //Skills[0].Activate(player);
+        // get the skill that is being activated i.e. setselectedskill as the index of the skill list
+
+        Skills[0].Activate(player);
     }
 
     public override void SetNewStats(ScriptablePlayer player) {

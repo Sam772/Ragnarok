@@ -14,6 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Faction: 0
   _characterName: Berserker
+  _baseStats:
+    Level: 1
+    MaxHealth: 12
+    CurrentHealth: 12
+    Strength: 7
+    Defence: 0
+    MaxSkillPoints: 6
+    CurrentSkillPoints: 6
+    CurrentExperience: 0
   _stats:
     Level: 1
     MaxHealth: 12
@@ -25,6 +34,6 @@ MonoBehaviour:
     CurrentExperience: 0
   Prefab: {fileID: 2157352808715309803, guid: ec194345b5ebc89459ec474556920300, type: 3}
   Sprite: {fileID: 21300000, guid: 44e4243f017bc534cbab43299818ee6c, type: 3}
-  PlayableCharacter: 1
   Skills:
   - {fileID: 11400000, guid: 755b462872b029b4795389f7d6b6ed38, type: 2}
+  PlayableCharacter: 1

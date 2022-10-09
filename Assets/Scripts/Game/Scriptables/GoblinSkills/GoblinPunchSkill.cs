@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Skills/New Goblin Punch Skill")]
-public class GoblinPunchSkill : ScriptableSkill {
+public class GoblinPunchSkill : ScriptableGoblinSkills {
     public override void Activate(ScriptableCharacter enemy) {
         
         var player = CharacterManager.Instance.PlayableCharacterScriptable;
@@ -19,6 +19,8 @@ public class GoblinPunchSkill : ScriptableSkill {
             //GameManager.Instance.SetState(new EnemyTurn(GameManager.Instance));
         } else {
             GameManager.Instance.GameHUD.SetGameStatusText(enemy.ScriptableCharacterName + " used " + SkillAttributes.SkillName + "!");
+
+            SkillState = SkillState.Activating;
 
             int damage = (enemyStats.Strength + 2) - playerStats.Defence;
 

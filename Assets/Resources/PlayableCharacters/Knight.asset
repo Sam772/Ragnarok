@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Faction: 0
   _characterName: Knight
-  _stats:
+  _baseStats:
     Level: 1
     MaxHealth: 10
     CurrentHealth: 10
@@ -23,8 +23,18 @@ MonoBehaviour:
     MaxSkillPoints: 6
     CurrentSkillPoints: 6
     CurrentExperience: 0
+  _stats:
+    Level: 1
+    MaxHealth: 10
+    CurrentHealth: 4
+    Strength: 5
+    Defence: 3
+    MaxSkillPoints: 6
+    CurrentSkillPoints: 3
+    CurrentExperience: 0
   Prefab: {fileID: 6671063579448547941, guid: e649bb5bc44a930429e7e5f507eade96, type: 3}
   Sprite: {fileID: 21300000, guid: beb03e0d9732af94db6ae2e5f5e4965a, type: 3}
-  PlayableCharacter: 0
   Skills:
   - {fileID: 11400000, guid: bbd05aa074e58854aab30768ff8fcfc8, type: 2}
+  - {fileID: 11400000, guid: 1eaa84c7c28498f4ab0ccef0e05bbe7d, type: 2}
+  PlayableCharacter: 0

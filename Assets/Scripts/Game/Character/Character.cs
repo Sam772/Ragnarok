@@ -7,19 +7,15 @@ public abstract class Character : MonoBehaviour, ICharacter {
     // This scripts represents the base character class used for both players and enemies
     public CharacterAction CharacterAction;
     public Stats Stats { get; private set; }
-    public ScriptableSkill[] Skills { get; private set; }
+    public List<ScriptableSkill> Skills { get; private set; }
 
     public void SetStats(Stats stats) {
         Stats = stats;
     }
 
-    public void SetSkills(ScriptableSkill[] skills) {
+    public void SetSkills(List<ScriptableSkill> skills) {
         Skills = skills;
     }
-
-    public virtual void TakeDamage(ScriptablePlayer player, ScriptableEnemy enemy) { }
-
-    public virtual void Defend(ScriptableCharacter character) { }
 
     public bool CheckIfDead(Character character) {
         if (Stats.CurrentHealth <= 0)
@@ -27,6 +23,10 @@ public abstract class Character : MonoBehaviour, ICharacter {
         else
             return false;
     }
+
+    public virtual void TakeDamage(ScriptablePlayer player, ScriptableEnemy enemy) { }
+
+    public virtual void Defend(ScriptableCharacter character) { }
 
     public virtual void SetNewStats(ScriptablePlayer player) { }
 
@@ -37,5 +37,5 @@ public enum CharacterAction {
     Idling = 0,
     Attacking = 1,
     Defending = 2,
-    ActivatingSkill = 3,
+    UsingSkill = 3,
 }

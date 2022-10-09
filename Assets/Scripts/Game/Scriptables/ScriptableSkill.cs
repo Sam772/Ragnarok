@@ -7,6 +7,7 @@ using UnityEngine;
 public class ScriptableSkill : ScriptableObject {
     [SerializeField] private SkillAttributes _skillAttributes;
     public SkillAttributes SkillAttributes => _skillAttributes;
+    public SkillState SkillState;
     private bool _isUnlocked = false;
 
     public virtual void Activate(ScriptableCharacter player) { }
@@ -18,5 +19,13 @@ public struct SkillAttributes {
     public string SkillName;
     public string SkillDescription;
     public int SkillCost;
+}
+
+[Serializable]
+public enum SkillState {
+    Dormant = 0,
+    Activating = 1,
+    Cooldown = 2,
+    InUse = 3
 }
 

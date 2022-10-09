@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Berserker : Player {
-    [SerializeField] private VigorUpSkill _vigorUpSkill;
-    public VigorUpSkill VigorUpSkill => _vigorUpSkill;
 
     public override void ActivateSkill(ScriptableCharacter player) {
-        CharacterAction = CharacterAction.ActivatingSkill;
-        
-        VigorUpSkill.Activate(player);
+        CharacterAction = CharacterAction.UsingSkill;
+
+        Skills[0].Activate(player);
     }
 
     public override void SetNewStats(ScriptablePlayer player) {

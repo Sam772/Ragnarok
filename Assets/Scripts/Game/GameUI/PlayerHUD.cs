@@ -17,6 +17,7 @@ public class PlayerHUD : CharacterHUD {
 
         // this is where the max stats are actually set
         character.SetStats(player.BaseStats);
+        character.SetSkills(player.Skills);
         
         player.BaseStats.CurrentHealth = player.BaseStats.MaxHealth;
         player.BaseStats.CurrentSkillPoints = player.BaseStats.MaxSkillPoints;
